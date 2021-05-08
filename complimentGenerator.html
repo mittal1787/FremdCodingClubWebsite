@@ -1,0 +1,90 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<style>
+	body {
+			padding: 10px 0;
+			border: 5px solid black;
+			text-align: center;
+			background-color: rgb(31,197,148);
+			font-family: "Trebuchet MS", Helvetica, sans-serif;
+		}
+</style>
+	
+<script>
+
+		var complimentsArray = ["Have a great day!", "You are enough :)", "You're one of a kind!", "You light up a room!", "You are making a difference", "You're an awesome friend!", "You're beautiful", "You're a great example to others", "You should be proud of yourself", "You inspire others"];
+
+    	function displayRandomCompliments(){
+			var arrayLength = 10;
+			var randnum = Math.floor(Math.random() * 10);
+			var compliment = complimentsArray[randnum];
+			document.getElementById("divIdCompliment").innerHTML = compliment; 
+
+			return compliment;
+		}
+		
+		var activityList = ["Step outside for a few minutes to enjoy the fresh air.", "Listen to your favorite song.", "Meditate for five minutes", "Name/reflect on three things you can see.", "Text a friend you haven't spoken to in a while.", "Name/reflect on three things you can hear.", "Stand up and stretch. All of your hard work will soon pay off.", "Name/reflect on an emotion you are feeling.", "Drink some water.", "Find a recipe to try for your next meal.", "Draw a stress cloud.", "Jog in place for a few minutes.", "It's time to take a longer break! Take a 30 minute break from your work."];
+		var counter = 0;
+
+		function main() {
+			var timeInMin = parseInt(document.getElementById("idNumMinutes").value);
+			var newInnerHTML = '<input type="button" id="idStart" value="Timer Running..." onClick="">';
+			document.getElementById("idMainButton").innerHTML = newInnerHTML;
+			window.setTimeout(randomActivity, timeInMin * 60000);
+		}
+		
+		function randomActivity() {
+			document.getElementById("idActivity").innerHTML = activityList[counter];
+			counter++;
+			var newInnerHTML = '<input type="button" id="idStart" value="Start Timer" onClick="main();">';
+			document.getElementById("idMainButton").innerHTML = newInnerHTML;
+			if (counter > 13) {
+				counter = 0;
+			}
+		}
+	
+
+
+</script>
+</head>
+<body>
+	<h1> Make Someone's Day a Little Better 2020: Description Below </h1>
+	<br>
+	<div id="idPomodoro">
+		<h2> Timer + Break Suggestions</h2>
+		<h4> Enter a time in minutes: </h4>
+		<br>
+		<input type="text" id="idNumMinutes" size="1">
+		<br>
+		<div id="idMainButton"> 
+		<br>
+		<input type="button" id="idStart" value="Start Timer" onClick="main();">
+		</div>
+		<br>
+		<div id="idActivity"> </div>
+	</div>
+	<br>
+	<br>
+	<div id="idCompliments">
+		<h2> Random Compliments :) </h2>
+		<input type = "button" value = "Want a Compliment?" onClick = "displayRandomCompliments()">
+		<br>
+		<br>
+		<br>
+		<div id="divIdCompliment"></div>
+	</div>
+	<br>
+	<h6> Welcome! Here is our project for this hackathon.</h6>
+	<br>
+	<h6> Component 1: The first part is a customizable study timer. This was inspired by the widely accredited Pomodoro study technique. </h6>
+	<h6> Traditional Pomodoro timers are, unfortunately, confined to intervals of 25 minutes and 5 minutes. The timer on this webpage allows </h6>
+	<h6> a user to decide how long they want their study sessions to be. In addition, this timer also includes suggestions for stress-relief activities </h6>
+	<h6> to partake in during the break interval. Unfortunately, at the moment, this timer does not time breaks intervals. This is both an </h6>
+	<h6> advantage and disadvantage because while it allows for flexibility with break times, it does not hold the user strictly accountable </h6>
+	<h6> in terms of ensuring that they do not take excessively long breaks. However, since this hackathon was about putting a smile on people's</h6>
+	<h6> faces, we figured that more flexible break intervals would be alright. </h6>
+	<br>
+	<h6> Component 2: The second part is a complimentor. A compliment has the potential to put a lasting smile on someone's face, and although </h6>
+	<h6> this complimentor cannot replace actual, interpersonal compliments, we hoped that this component would make someone's day a little better. </h6>
+</body>
