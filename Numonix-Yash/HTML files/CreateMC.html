@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Numonix</title>
+	<link rel="stylesheet" href="../CSS files/styles.css"><link>
+	<link rel="stylesheet" href="../CSS files/createSet.css"><link>
+	<link rel="preconnect" href="https://fonts.gstatic.com/ ">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div id="navbar">
+		<img src = "../Images/logo.png" class = "logo" onclick="location.href = 'Home.html';">
+		<button id = "homeButton" class = "navbutton" onclick="location.href = 'Home.html';">Home</button>
+		<button id = "aboutButton" class = "navbutton" onclick="location.href = 'About.html';">About</button>
+		<button id = "toolsButton" class = "navbutton" onclick="location.href = 'StudyTools.html';">Study Tools</button>
+		<button id = "createButton" class = "navbutton" onclick="location.href = 'Create.html';">Create</button>
+
+		<button id = "loginButton" class = "accountButton" onclick="location.href = 'Login.html';">Log In</button>
+		<button id = "signUpButton" class = "accountButton" onclick="location.href = 'SignUp.html';">Sign Up</button>
+		
+	</div>
+    <div id = "mainCreateBox">
+        <h1>Create Multiple Choice Quesion Set</h1>
+        <input id="nameBox" placeholder="Enter a name for your question set" class = "topInputs"></input>
+        <p class="label">Name</p>
+        <br>
+        <input id="subjectBox" placeholder='Add a description...' class = "topInputs"></input>
+        <p class="label">Description</p>
+    </div>
+    <div id='questionsContainer'>
+        <h1>Add Questions:</h1>
+        <div id=questionBoxes>
+            <div id = "box0"class = "questionBox">
+                <h1 class="label">1</h1>
+                <div>
+                    <input id="question0" placeholder="Enter Question" class = "questionInput"></input>
+                    <br>
+                    <p class="label">Question</p>
+                </div>
+                <div>
+                    <input id="answer0" placeholder="Enter Answer" class = "questionInput"></input>
+                    <br>
+                    <p class="label">Answer</p>
+                </div> 
+            </div>
+            <br>
+            <br>
+            <div id = "box1"class = "questionBox">
+                <h1 class="label">2</h1>
+                <div>
+                    <input id="question1" placeholder="Enter Question" class = "questionInput"></input>
+                    <br>
+                    <p class="label">Question</p>
+                </div>
+                <div>
+                    <input id="answer1" placeholder="Enter Answer" class = "questionInput"></input>
+                    <br>
+                    <p class="label">Answer</p>
+                </div> 
+            </div>
+            <br>
+            <br>
+            <div id = "box2"class = "questionBox">
+                <h1 class="label">3</h1>
+                <div>
+                    <input id="question2" placeholder="Enter Question" class = "questionInput"></input>
+                    <br>
+                    <p class="label">Question</p>
+                </div>
+                <div>
+                    <input id="answer2" placeholder="Enter Answer" class = "questionInput"></input>
+                    <br>
+                    <p class="label">Answer</p>
+                </div> 
+            </div>
+            <br>
+            <br>
+            <div id = "box3"class = "questionBox">
+                <h1 class="label">4</h1>
+                <div>
+                    <input id="question3" placeholder="Enter Question" class = "questionInput"></input>
+                    <br>
+                    <p class="label">Question</p>
+                </div>
+                <div>
+                    <input id="answer3" placeholder="Enter Answer" class = "questionInput"></input>
+                    <br>
+                    <p class="label">Answer</p>
+                </div> 
+            </div>
+            <br>
+            <br>
+            <div id = "box4"class = "questionBox">
+                <h1 class="label">5</h1>
+                <div>
+                    <input id="question4" placeholder="Enter Question" class = "questionInput"></input>
+                    <br>
+                    <p class="label">Question</p>
+                </div>
+                <div>
+                    <input id="answer4" placeholder="Enter Answer" class = "questionInput"></input>
+                    <br>
+                    <p class="label">Answer</p>
+                </div> 
+            </div>
+        </div>
+        <br>
+        <br>
+        <div id = "box4"class = "questionBox">
+            <button id="addBoxButton" onclick="addBox()">Add More</button>
+        </div>
+        <button id="completeButton" onclick="addData()">Create</button>
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+	
+	<script src="../JS files/init.js"></script>
+	<script src="../JS files/auth.js"></script>
+	<script src="../JS files/realtime.js"></script>	
+	<script>
+        var total = 5;
+
+        function addData()
+        {
+            let name = nameBox.value;
+            let description = subjectBox.value;
+
+            let questionArray = [];
+            let answerArray = [];
+            for(i = 0; i < total; i++)
+            {
+                questionArray[i] = document.getElementById("question" + i).value;
+                answerArray[i] = document.getElementById("answer" + i).value;
+            }
+
+            if(!nameBox.value || !subjectBox.value)
+                alert("Please enter a name and description");
+            else
+            {
+                let filled = true;
+                for(i = 0; i < total; i++)
+                {
+                    if(!document.getElementById("question" + i).value || 
+                        !document.getElementById("answer" + i).value)
+                        filled = false;
+                }
+                for(i = 0; i < total; i++)
+                {
+                    for(j = 0; j < total; j++)
+                        if(questionArray[i] == questionArray[j] && i != j)
+                            filled = false;
+                }
+                if(filled)
+                {
+                    db.collection('Question Set').add({
+                    Name: name,
+                    Description: description,
+                    Questions: questionArray,
+                    Answers: answerArray,
+                    Type: "mc"
+                    }).catch(e => alert(e.message)).then(() => {
+                        location.href = "Create.html";
+                    }).catch(e => alert(e.message));
+                }
+                else
+                    alert("Enter at least 5 unique questions and answers");
+            }
+            
+        }
+
+        function addBox()
+        {
+            total++;
+            tempQuestions = [];
+            tempAnswers = [];
+            for(i = 0; i < total-1; i++)
+            {
+                tempQuestions[i] = document.getElementById("question" + i).value;
+                tempAnswers[i] = document.getElementById("answer" + i).value;
+            }
+            questionBoxes.innerHTML += '<br><br><div id = "box4"class = "questionBox"><h1 class="label">'+total+'</h1><div><input id="question'+(total-1)+'" placeholder="Enter Question" class = "questionInput"></input><br><p class="label">Question</p></div><div><input id="answer'+(total-1)+'" placeholder="Enter Answer" class = "questionInput"></input><br><p class="label">Answer</p></div> </div>'; 
+            for(i = 0; i < total-1; i++)
+            {
+                document.getElementById("question" + i).value = tempQuestions[i];
+                document.getElementById("answer" + i).value = tempAnswers[i];
+            }
+        }
+	</script>
+	
+</body>
+</html>

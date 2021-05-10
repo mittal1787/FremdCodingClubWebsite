@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Numonix</title>
+	<link rel="stylesheet" href="../CSS files/styles.css"><link>
+	<link rel="stylesheet" href="../CSS files/home.css"><link>
+	<link rel="preconnect" href="https://fonts.gstatic.com/ ">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div id="navbar">
+		<img src = "../Images/logo.png" class = "logo" onclick="location.href = 'Home.html';">
+		<button id = "homeButton" class = "navbutton" onclick="location.href = 'Home.html';">Home</button>
+		<button id = "aboutButton" class = "navbutton" onclick="location.href = 'About.html';">About</button>
+		<button id = "toolsButton" class = "navbutton" onclick="location.href = 'StudyTools.html';">Study Tools</button>
+		<button id = "createButton" class = "navbutton" onclick="location.href = 'Create.html';">Create</button>
+
+		<button id = "loginButton" class = "accountButton" onclick="location.href = 'Login.html';">Log In</button>
+		<button id = "signUpButton" class = "accountButton" onclick="location.href = 'SignUp.html';">Sign Up</button>
+		
+	</div>
+	<div id="imageContainer">
+		<img src = "../Images/backImage.png" width=100% height=100%></img>
+		<div id="signedModal">
+			<button id = "logOutButton" class = "accountButton" onclick="signOut()">Log Out</button>
+		</div>
+		<div id="imageOverlay"></div>
+		<div id="imageOverlay2"></div>
+		<div id="colorDivider">
+			<br>
+			<br>
+		</div>
+	</div>
+	<div id = "section">
+		<img src = "../Images/brain.png" class ="sectionImg" align = "right">
+		<div class="bodyLeft">
+			<h1 class = "header">What is Numonix?</h1>
+			Numonix is an online learning platform for students to learn and study in fun and effective ways.
+		</div>
+		<img src = "../Images/tools.png" class ="sectionImg" align = "left">
+		<div class="bodyRight">
+			<h1 class = "header2">Access Study Tools</h1>
+			Numonix is home to many tools for studying various question sets. Try one out to see how you do!
+		</div>
+		<img src = "../Images/account.png" class ="sectionImg" align = "right">
+		<div class="bodyLeft">
+			<h1 class = "header">Create an Account</h1>
+			When you create a Numonix account, you can create your own question sets and allow others to view and study from them.
+		</div>
+	</div>
+
+	<script>
+		var i = 0;
+		var text = "Numonix"
+		var text2 = "Beyond Memorization."
+		var speed = 100;
+
+		function type()
+		{
+			if(i < text.length)
+			{
+				imageOverlay.innerHTML += text.charAt(i);
+				i++;
+				setTimeout(type, speed);	
+			}
+			else
+			{
+				i = 0;
+				setTimeout(type2, 500);
+				
+			}
+		}
+		
+		function type2()
+		{
+			if(i < text2.length)
+			{
+				imageOverlay2.innerHTML += text2.charAt(i);
+				i++;
+				setTimeout(type2, 50);	
+			}
+		}
+		
+		type();
+
+	</script>
+	<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+	
+	<script src="../JS files/init.js"></script>
+	<script src="../JS files/auth.js"></script>
+	<script src="../JS files/realtime.js"></script>	
+</body>
+</html>

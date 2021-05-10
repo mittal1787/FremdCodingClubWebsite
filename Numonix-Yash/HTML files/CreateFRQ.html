@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Numonix</title>
+	<link rel="stylesheet" href="../CSS files/styles.css"><link>
+	<link rel="stylesheet" href="../CSS files/createSet.css"><link>
+	<link rel="preconnect" href="https://fonts.gstatic.com/ ">
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap" rel="stylesheet">
+</head>
+<body>
+	<div id="navbar">
+		<img src = "../Images/logo.png" class = "logo" onclick="location.href = 'Home.html';">
+		<button id = "homeButton" class = "navbutton" onclick="location.href = 'Home.html';">Home</button>
+		<button id = "aboutButton" class = "navbutton" onclick="location.href = 'About.html';">About</button>
+		<button id = "toolsButton" class = "navbutton" onclick="location.href = 'StudyTools.html';">Study Tools</button>
+		<button id = "createButton" class = "navbutton" onclick="location.href = 'Create.html';">Create</button>
+
+		<button id = "loginButton" class = "accountButton" onclick="location.href = 'Login.html';">Log In</button>
+		<button id = "signUpButton" class = "accountButton" onclick="location.href = 'SignUp.html';">Sign Up</button>
+		
+	</div>
+    <div id = "mainCreateBox">
+        <h1>Create Open-Ended Quesion Set</h1>
+        <input id="nameBox" placeholder="Enter a name for your question set" class = "topInputs"></input>
+        <p class="label">Name</p>
+        <br>
+        <input id="subjectBox" placeholder='Add a description...' class = "topInputs"></input>
+        <p class="label">Description</p>
+    </div>
+    <div id='questionsContainer'>
+        <h1>Add Questions:</h1>
+        <div id=questionBoxes>
+            <div id = "box0"class = "questionBox">
+                <h1 class="label">Enter Prompts:</h1>
+                <br>
+                <div>
+                    <input id="short" placeholder="Enter Short Answer Propmt" class = "promptInput"></input>
+                    <br>
+                    <p class="label">Short Answer Prompt</p>
+                </div>
+                <div>
+                    <input id="long" placeholder="Enter Long Essay Prompt" class = "promptInput"></input>
+                    <br>
+                    <p class="label">Long Essay Prompt</p>
+                </div> 
+            </div>
+            <br>
+            <br>
+            <div id = "box1"class = "questionBox">
+                <h1 class="label">Enter Key Terms</h1>
+                <div>
+                    <input id="term1" placeholder="Enter Term" class = "termInput"></input>
+                    <input id="term2" placeholder="Enter Term" class = "termInput"></input>
+                    <input id="term3" placeholder="Enter Term" class = "termInput"></input>
+                    <input id="term4" placeholder="Enter Term" class = "termInput"></input>
+                    <input id="term5" placeholder="Enter Term" class = "termInput"></input>
+                </div> 
+            </div>
+            
+        </div>
+        <br>
+        <br>
+        <button id="completeButton" onclick="addData()">Create</button>
+    </div>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+	<script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+	
+	<script src="../JS files/init.js"></script>
+	<script src="../JS files/auth.js"></script>
+	<script src="../JS files/realtime.js"></script>	
+	<script>
+        var total = 5;
+
+        function addData()
+        {
+            let name = nameBox.value;
+            let description = subjectBox.value;
+
+            let termsArray = [];
+            for(i = 0; i < total; i++)
+            {
+                termsArray[i] = document.getElementById("term" + (i+1)).value;
+            }
+            db.collection('Question Set').add({
+                Name: name,
+                Description: description,
+                Terms: termsArray,
+                ShortPropmt: short.value,
+                LongPropmt: long.value,
+                Type: "frq",
+            }).catch(e => alert(e.message)).then(() => {
+                location.href = "Create.html";
+            }).catch(e => alert(e.message));
+        }
+
+	</script>
+	
+</body>
+</html>

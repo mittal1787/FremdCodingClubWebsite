@@ -1,0 +1,152 @@
+#studyPlanHeader{
+    text-align: center;
+    height: 10vh;   
+    background-color: #364156;
+    color: #FFFFFF;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-top: 5vh;
+    font-size: 5vh;
+    font-weight: bolder;
+    font-family: 'Poppins', sans-serif;
+}
+
+#studyPlanReturn{
+    outline: none;
+    width: 50vw;
+    height: 6vh;
+    background-color: #212D40 ;
+    color: #D66853  ;
+    border: none;
+    font-weight: 700;
+    font-size: large;
+    margin:0 auto;
+    display:block;
+}
+
+#studyPlanReturn:hover{
+    transition-duration: .3s;
+    color: #212D40;
+    background-color: #D66853 ;
+    font-weight: bolder;
+  }
+
+#background{
+    background-color: #212D40;
+}
+
+#mainSection{
+    text-align: center;
+    background-color: #212D40;
+    color: #FFFFFF;
+    font-size: 3vh;
+    font-weight: bolder;
+}
+
+#imageOverlay{
+    border-radius: 2vw;
+    position: absolute;
+    top: 70%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    color: #ffffff;
+    font-weight: bolder;
+    background-color: #364156;
+    font-family: 'Poppins', sans-serif;
+}
+
+#questionSetHeader{
+    text-align: center;
+    font-family: 'Poppins', sans-serif;
+    padding-bottom: 2vh;
+  }
+  
+.planButton{
+      outline: none;
+      width: 50vw;
+      height: 6vh;
+      background-color: #212D40 ;
+      color: #D66853  ;
+      border: none;
+      font-weight: 700;
+      font-size: large;
+      margin-left: 5vw;
+      margin-bottom: 0.5vw;
+      margin-right: 3vw;
+  }
+  
+.planButton:hover{
+    transition-duration: .3s;
+    color: #212D40;
+    background-color: #D66853 ;
+    font-weight: bolder;
+  }
+
+  ul {list-style-type: none;}
+  
+  /* Month header */
+  .planHeader {
+    padding: 70px 25px;
+    width: 100%;
+    background: #364156;
+    text-align: center;
+  }
+  
+  /* Month list */
+  .planHeader ul {
+    margin: 0;
+    padding: 0;
+  }
+  
+  .planHeader ul li {
+    color: white;
+    font-size: 20px;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+  }
+  
+  /* Weekdays (Mon-Sun) */
+  .weekdays {
+    margin: 0;
+    padding: 10px 0;
+    background-color:#212D40;
+  }
+  
+  .weekdays li {
+    display: inline-block;
+    width: 13.6%;
+    color: #7D4E57;
+    font-weight: bolder;
+    text-align: center;
+  }
+  
+  /* Days (1-31) */
+  .days {
+    padding-left: 0;
+    background: #ddd ;
+    margin: 0;
+  }
+  
+  .days li {
+    list-style-type: none;
+    display: inline-block;
+    width: 13.6%;
+    text-align: center;
+    margin-top: 5vh;
+    margin-bottom: 5vh;
+    font-size:20px;
+    font-weight: bolder;
+    color: #D66853  ;
+  }
+  
+  /* Highlight the "current" day */
+  .days li .active {
+    padding: 5px 0;
+    background: #364156 ;
+    color: white !important
+  }

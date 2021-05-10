@@ -1,0 +1,151 @@
+#mainCreateBox{
+    width: 90vw;
+    height: 50vh;
+    padding-left: 7vw;
+    padding-top: 3vw;
+}
+
+.topInputs{
+    width: 45vw;
+    height: 2vw;
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #11151C;
+    font-size: 3vh;
+    font-weight: 500;
+}
+
+.label{
+    margin: none;
+    padding: none;
+}
+
+.topInputs:focus{
+    transition-duration: .2s;
+    border-color: #D66853;
+    outline: none;
+}
+
+#questionsContainer{
+    background-color: #D66853;
+    color: #FFFFFF;
+    width: 100vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    padding-bottom: 10vh;
+}
+
+.questionBox{
+    width: 90vw;
+    height: 35vh;
+    background-color: #FFFFFF;
+    flex-direction: row;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    border-radius: 1vh;
+}
+
+.questionInput{
+    width: 40vw;
+    height: 2vw;
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #11151C;
+    font-size: 3vh;
+    font-weight: 500;
+}
+
+.questionInput:focus{
+    transition-duration: .2s;
+    border-color: #D66853;
+    outline: none;
+}
+
+.label{
+    color: #11151C;
+}
+
+#completeButton{
+    outline: none;
+    margin: 5vw;
+    background-color: #11151C;
+    color: #FFFFFF;
+    width: 10vw;
+    height: 5vw;
+    border-radius: 1vw;
+    border: none;
+    align-self: center;
+    font-size: 5vh;
+    font-weight: bold;
+}
+
+#completeButton:hover{
+    transition-duration: .3s;
+    background-color: #FFFFFF;
+    color: #D66853;
+}
+
+#addBoxButton{
+    outline: none;
+    margin: 5vw;
+    background-color: #D66853;
+    color: #FFFFFF;
+    width: 15vw;
+    height: 5vw;
+    border-radius: 1vw;
+    border: none;
+    align-self: center;
+    font-size: 4vh;
+    font-weight: bold;
+}
+
+#addBoxButton:hover{
+    transition-duration: .3s;
+    background-color: #FFFFFF;
+    color: #D66853;
+}
+
+.promptInput{
+    width: 30vw;
+    height: 2vw;
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #11151C;
+    font-size: 3vh;
+    font-weight: 500;
+}
+
+.termInput{
+    width: 20vw;
+    height: 2vw;
+    border-style: solid;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom-color: #11151C;
+    font-size: 3vh;
+    font-weight: 500;
+    margin-top: 1vw;
+}
+
+.termInput:focus{
+    transition-duration: .2s;
+    border-color: #D66853;
+    outline: none;
+}
+
+.promptInput:focus{
+    transition-duration: .2s;
+    border-color: #D66853;
+    outline: none;
+}

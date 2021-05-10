@@ -1,0 +1,77 @@
+#imageOverlay{
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 10vw;
+    color: #11151C;
+    font-weight: bolder;
+}
+
+#imageOverlay2{
+    position: absolute;
+    top: 55%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 2vw;
+    color: #11151C;
+    font-weight: bold;
+}
+
+#signedModal{
+    display: none;
+    position: absolute;
+    left: 70%;
+    top: 20%;
+    text-align: center;
+    justify-content: center;
+    color: #D66853;
+    font-size: 2vw;
+    font-weight: 600;
+}
+
+#colorDivider{
+    position: absolute;
+    background-color: #364156;
+    bottom: 0%;
+    width: 100%;
+}
+
+.bodyLeft{
+    text-align: left;
+    height: 50vh;
+    background-color: #364156;
+    color: #FFFFFF;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-bottom: 5vh;
+    padding-top: 5vh;
+    font-size: 5vh;
+    font-weight: bolder;
+}
+.bodyRight{
+    text-align: right;
+    height: 50vh;
+    background-color: #212D40;
+    color: #D66853;
+    padding-left: 10vw;
+    padding-right: 10vw;
+    padding-bottom: 5vh;
+    padding-top: 5vh;
+    font-size: 5vh;
+    font-weight: bolder;
+}
+
+.sectionImg{
+    margin: 5vw;
+    width: 40vh;
+    height: 40vh;
+}
+
+.header{
+    color: #D66853;
+}
+
+.header2{
+    color: #FFFFFF;
+}

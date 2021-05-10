@@ -1,0 +1,77 @@
+body{
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Poppins', sans-serif;
+}
+
+#navbar{
+    background-color: #212D40;
+    display: flex;
+    width: 100vw;
+    height: 12vh;
+    align-items: center;
+}
+
+.logo{
+    width: 30vh;
+    height: 12vh;
+    margin-left: 3vw;
+    margin-right: 3vw;
+}
+
+.logo:hover{
+    transition-duration: .4s;
+    background-color: #364156 ;
+}
+
+.navbutton{
+    outline: none;
+    width: 12vw;
+    height: 12vh;
+    background-color: #212D40 ;
+    color: #D66853  ;
+    border: none;
+    font-weight: 700;
+    font-size: large;
+}
+
+.navbutton:hover{
+    transition-duration: .3s;
+    color: #212D40;
+    background-color: #D66853 ;
+    font-weight: bolder;
+}
+
+.accountButton{
+    outline: none;
+    border-radius: 2vw;
+    width: 8vw;
+    margin-right: .75vw;
+    margin-left: .75vw;
+    height: 6vh;
+    align-self: right;
+    background-color: #D66853;
+    color: #212D40;
+    justify-self: center;
+    font-weight: bolder;
+}
+
+.accountButton:hover{
+    transition-duration: .3s;
+    border-radius: 2vw;
+    width: 8vw;
+    height: 6vh;
+    align-self: right;
+    background-color: #212D40;
+    color: #D66853;
+    justify-self: center;
+    font-weight: bolder;
+}
+
+#loginButton{
+    margin-left: 10vw;
+}
+
+
+

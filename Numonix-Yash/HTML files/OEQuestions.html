@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="../CSS files/mcstyle.css"><link>
+        <link rel="stylesheet" href="../CSS files/styles.css"><link>
+    </head>
+    <body>
+        <div id="navbar">
+            <img src = "../Images/logo.png" class = "logo" onclick="location.href = 'Home.html';">
+            <button id = "homeButton" class = "navbutton" onclick="location.href = 'Home.html';">Home</button>
+            <button id = "aboutButton" class = "navbutton" onclick="location.href = 'About.html';">About</button>
+            <button id = "toolsButton" class = "navbutton" onclick="location.href = 'StudyTools.html';">Study Tools</button>
+            <button id = "createButton" class = "navbutton" onclick="location.href = 'Create.html';">Create</button>
+            <button id = "loginButton" class = "accountButton" onclick="location.href = 'Login.html';">Log In</button>
+            <button id = "signUpButton" class = "accountButton" onclick="location.href = 'SignUp.html';">Sign Up</button>
+            
+        </div>
+        
+        <div id="mainSection">
+            <div class= "questions">
+                <h3 class= 'questionHeader' id="shortBox">WRITE YOUR SHORT-ANSWER QUESTION HERE</h3>
+                <p>Type a paragraph-length response</p>
+                <hr />
+                <form>
+                    <textarea  rows="10" cols="50" wrap="physical"></textarea>
+                    </form>
+                <hr />
+                <h3 class= 'questionHeader' id="longBox">WRITE YOUR LONG-ANSWER QUESTION HERE</h3>
+                <p>Type a multi-paragraph length response</p>
+                <hr />
+                <form>
+                    <textarea  rows="20" cols="100" wrap="physical"></textarea>
+                    </form>
+                <hr />
+            </div>
+            <div id = termsDiv>
+                <h3 class= 'questionHeader'>Helpful Terms</h3>
+                
+            </div>
+        </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    
+    <script src="../JS files/init.js"></script>
+    <script src="../JS files/auth.js"></script>
+    <script src="../JS files/realtime.js"></script>	
+
+    <script>
+
+        let termsArray = JSON.parse(localStorage.getItem("keyWordsArray"));
+        let long = localStorage.getItem("long");
+        let short = localStorage.getItem("short");
+        let questionName = localStorage.getItem("questionName");
+        console.log(short, long, questionName)
+
+        shortBox.innerHTML = short;
+        longBox.innerHTML = long;
+        for(i=0;i<termsArray.length;i++)
+        {
+            termsDiv.innerHTML += "<div class = 'term'>" + termsArray[i] + "</div>"
+        }
+
+
+
+    </script>
+        
+            
+    </body>
+        
+            
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="../CSS files/mcstyle.css"><link>
+        <link rel="stylesheet" href="../CSS files/styles.css"><link>
+    </head>
+    <body>
+        <div id="navbar">
+            <img src = "../Images/logo.png" class = "logo" onclick="location.href = 'Home.html';">
+            <button id = "homeButton" class = "navbutton" onclick="location.href = 'Home.html';">Home</button>
+            <button id = "aboutButton" class = "navbutton" onclick="location.href = 'About.html';">About</button>
+            <button id = "toolsButton" class = "navbutton" onclick="location.href = 'StudyTools.html';">Study Tools</button>
+            <button id = "createButton" class = "navbutton" onclick="location.href = 'Create.html';">Create</button>
+            <button id = "loginButton" class = "accountButton" onclick="location.href = 'Login.html';">Log In</button>
+            <button id = "signUpButton" class = "accountButton" onclick="location.href = 'SignUp.html';">Sign Up</button>
+            
+        </div>
+        
+        <form action='/action_page.php'></form>
+        <div id="mainSection">
+            <form action='/action_page.php' id="formBody"></form>
+        </div>
+        <button value="Submit" id="submit" onclick="grade()">Submit</button>
+        </form>
+            
+            
+    </body>
+    
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+    
+    <script src="../JS files/init.js"></script>
+    <script src="../JS files/auth.js"></script>
+    <script src="../JS files/realtime.js"></script>	
+
+    <script>
+        let name = localStorage.getItem("questionName");
+        let questions = JSON.parse(localStorage.getItem('questionArray'));
+        let answers = JSON.parse(localStorage.getItem('answerArray'));
+
+        function createOption(taken, option)
+        {
+            let optionToReturn = "";
+            while(optionToReturn == ""){
+                let test = answers[Math.floor(Math.random() * (answers.length))];
+                let passed = true;
+
+                if(test == taken[0])
+                    passed = false;
+                if(test == taken[1])
+                    passed = false;
+                if(test == taken[2])
+                    passed = false;
+        
+                if(passed)
+                    optionToReturn = test;
+                
+                                                
+            }
+            return optionToReturn;
+            return;
+        }
+
+        function setUp()
+        {
+            for(i = 0; i < questions.length; i++)
+            {
+                let num = Math.random()
+                let option1, option2, option3, option4;
+                if(num <= .25){
+                    option1 = answers[i];
+                    let taken=[];
+                    taken.push(option1);
+                    option2 = createOption(taken, option2);
+                    taken.push(option2);
+                    option3 = createOption(taken, option3);
+                    taken.push(option3);
+                    option4 = createOption(taken, option4);
+                }
+                else if(num > .25 && num <= .5){
+                    option2 = answers[i];
+                    let taken=[];
+                    taken.push(option2);
+                    option1 = createOption(taken, option1);
+                    taken.push(option1);
+                    option3 = createOption(taken, option3);
+                    taken.push(option3);
+                    option4 = createOption(taken, option4);
+                }
+                else if(num > .5 && num <= .75){
+                    option3 = answers[i];
+                    let taken=[];
+                    taken.push(option3);
+                    option2 = createOption(taken, option2);
+                    taken.push(option2);
+                    option1 = createOption(taken, option1);
+                    taken.push(option1);
+                    option4 = createOption(taken, option4);
+                }
+                else{
+                    option4 = answers[i];
+                    let taken=[];
+                    taken.push(option4);
+                    option2 = createOption(taken, option2);
+                    taken.push(option2);
+                    option3 = createOption(taken, option3);
+                    taken.push(option3);
+                    option1 = createOption(taken, option1);
+                }
+                var modArray = [];
+                for(j = 0; j < questions.length; j++)
+                        modArray[j] = questions[j];
+                
+                for(j = 0; j < questions.length; j++)
+                {
+                    if(questions[i].includes(questions[j]))
+                        modArray[i] = i+questions[i];
+                }
+
+                formBody.innerHTML +=
+                    "<h3 class= 'questionHeader'>"+ (i+1) +". " + questions[i] +"</h3>" +
+                    "<hr>" +
+                    "    <input type='radio' id = 'option1_"+i+"' value='"+ option1 +"' name='"+ modArray[i] +"_" + "'/>" +
+                    "    <label>"+ option1 +"</label>" +
+                    "<hr>" +
+                    "    <input type='radio' id = 'option2_"+i+"' value='"+ option2 +"' name='"+ modArray[i] +"_" +"'/>" +
+                    "    <label>"+ option2 +"</label>" +
+                    "<hr>" +
+                    "    <input type='radio' id = 'option3_"+i+"' value='"+ option3 +"' name='"+ modArray[i] +"_" +"'/>" +
+                    "    <label>"+ option3 +"</label>" +
+                    "<hr>" +
+                    "    <input type='radio' id = 'option4_"+i+"' value='"+ option4 +"' name='"+ modArray[i] +"_" +"'/>" +
+                    "    <label>"+ option4 +"</label>" +
+                    "<hr>";
+            }
+        }
+
+        function grade()
+        {
+            let score = 0;
+            for(i=0;i<questions.length;i++)
+            {
+                let selected;
+                if(document.getElementById('option1_'+i).checked)
+                    selected = document.getElementById('option1_'+i).value;
+                else if(document.getElementById('option2_'+i).checked)
+                    selected = document.getElementById('option2_'+i).value;
+                else if(document.getElementById('option3_'+i).checked)
+                    selected = document.getElementById('option3_'+i).value;
+                else if(document.getElementById('option4_'+i).checked)
+                    selected = document.getElementById('option4_'+i).value;
+                else
+                    selected = "none";
+
+                if(selected == answers[i])
+                    score++;
+                console.log(selected, score)
+            }
+            mainSection.innerHTML = "Your Score: " + score + "/" + questions.length + " (" +Math.round((score/questions.length)*100) + '%)';
+            submit.innerHTML = "Return";
+            submit.setAttribute('onclick','location.href="MultiChoice.html"')
+        }
+        setUp();
+        
+    </script>
+            
+</html>

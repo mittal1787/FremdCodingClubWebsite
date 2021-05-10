@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <link rel="stylesheet" href="../CSS files/mcstyle.css"><link>
+        <link rel="stylesheet" href="../CSS files/styles.css"><link>
+        </head>
+        
+        <div id="navbar">
+                <img src = "../Images/logo.png" class = "logo" onclick="location.href = 'Home.html';">
+                <button id = "homeButton" class = "navbutton" onclick="location.href = 'Home.html';">Home</button>
+                <button id = "aboutButton" class = "navbutton" onclick="location.href = 'About.html';">About</button>
+                <button id = "toolsButton" class = "navbutton" onclick="location.href = 'StudyTools.html';">Study Tools</button>
+                <button id = "createButton" class = "navbutton" onclick="location.href = 'Create.html';">Create</button>
+                <button id = "loginButton" class = "accountButton" onclick="location.href = 'Login.html';">Log In</button>
+                <button id = "signUpButton" class = "accountButton" onclick="location.href = 'SignUp.html';">Sign Up</button>
+                
+        </div>
+        <div id="mainSection">
+            <div id="questionSetHeader"> Question Sets: </div>
+        </div>
+            
+        </div>
+
+        <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.4.1/firebase-firestore.js"></script>
+        
+        <script src="../JS files/init.js"></script>
+        <script src="../JS files/auth.js"></script>
+        <script src="../JS files/realtime.js"></script>	
+
+        <script>
+            db.collection("Question Set").where("Type", "==", "mc").get().then((querySnapshot) => {
+            querySnapshot.forEach((doc) => {
+                // doc.data() is never undefined for query doc snapshots
+                let data = (doc.id, " => ", doc.data());
+                mainSection.innerHTML += '<button class = "questionSetButton" onclick="start('+"'" + data.Name +"'" +')" >' + data.Name +' - ' + data.Description +'</button>'
+
+            });}).catch((error) => {
+            console.log("Error getting documents: ", error);})
+
+            function start(name)
+            {
+                db.collection("Question Set").where("Name", '==', name).get().then((snapshot) => {
+                    snapshot.forEach((doc) => {
+                        let questionArray = [];
+                        let answerArray = [];
+                        let questionName = doc.data().Name;
+                        for(i=0;i<doc.data().Questions.length;i++)
+                        {
+                            questionArray.push(doc.data().Questions[i]);
+                            answerArray.push(doc.data().Answers[i]);
+                        }
+                        localStorage.setItem("questionArray", JSON.stringify(questionArray));
+                        localStorage.setItem("answerArray", JSON.stringify(answerArray));
+                        localStorage.setItem("questionName", questionName);
+                        console.log(localStorage)
+                    });
+                }).catch((e) => {
+                    alert("Error finding entry: ", e.message);
+                }).then(() => {
+                    location.href = "McQuestions.html";
+                });
+            }
+        </script>
+            
+    </html>

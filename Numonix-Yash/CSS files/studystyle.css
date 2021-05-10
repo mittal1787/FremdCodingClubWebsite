@@ -1,0 +1,57 @@
+body {
+  background: url("../Images/pencilpage.png");
+
+  /* Full height */
+  height: 100%; 
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.transparentbox {
+   opacity: 0.8;
+   margin-left: 12vw;
+   margin-right: 12vw;
+   margin-top: 5vw;
+   margin-bottom: 5vw;
+   padding: 5vw;
+   padding-top: 0%;
+   background-repeat: no-repeat;
+   border-radius: 25px;
+   text-align: center;
+   background-color: #212D40;
+   color: #D66853;
+   filter: alpha(opacity=80);
+   height: 120vh;
+   width: 70vw;
+   box-shadow: 10px 10px 5px darkgray;
+
+}
+
+#studyToolsHeader{
+  padding-top: 5vh;
+  padding-bottom: 3vh;
+}
+
+.studyButton {
+  border: none;
+  border-radius: 25px;
+  color: #11151C;
+  padding: 13px 13px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 30px;
+  margin: 20px 3px;
+  transition-duration: 0.4s;
+  opacity: 1;
+  cursor: pointer;
+  box-shadow: 5px 5px 5px grey;
+}
+
+.studyButton:hover {
+  background-color: #7D4E57;
+  color: white;
+}

@@ -1,0 +1,125 @@
+#mainContainer{
+    width: 100vw;
+    height: 100vh;
+    text-align: center;
+    justify-content: center;
+}
+
+.leftMain{
+    position: absolute;
+    top: 50%;
+    left:  30%;
+    transform: translate(-50%, -50%);
+    background-color: #D66853;
+    color: #FFFFFF;
+    border-radius: 1vw;
+    width: 35vw;
+    height: 35vh;
+    padding: 5vh;
+    opacity: 0.7;
+    flex-direction: column;
+    align-items: center;
+}
+
+.rightMain{
+    position: absolute;
+    top: 40%;
+    right: 0%;
+    transform: translate(-25%, -75%);
+    width: 20vw;
+    height: 20vh;
+    font-size: 10vh;
+    text-align: end;
+    font-weight: bolder;
+}
+
+h1{
+    font-size: 4vh;
+    color: #11151C;
+    font-weight: bolder;
+    margin-top: 5%;
+    opacity: 1;
+}
+
+#mainImg{
+    border: 5px;
+    width: 100%;
+    height: 100%;
+}
+
+#subText{
+    margin-bottom: 3vh;
+    padding: 3vh;
+    padding-top: 0%;
+    opacity: 1;
+}
+
+.boxButton{
+    outline: none;
+    border-radius: 2vw;
+    width: 10vw;
+    margin-right: .75vw;
+    margin-left: .75vw;
+    height: 8vh;
+    align-self: right;
+    background-color: #212D40;
+    color: #D66853;
+    justify-self: center;
+    font-weight: bolder;
+    opacity: 1;
+    cursor: pointer;
+}
+
+.boxButton:hover{
+    transition-duration: .4s;
+    background-color: #364156;
+    color: #D66853;
+}
+
+#loggedContainer{
+    display: none;
+    background-color: #D66853;
+    width: 100vw;
+    height: 80vh;
+    text-align: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#createHeader{
+    font-size: 4vh;
+    color: #FFFFFF;
+    font-weight: bolder;
+    margin-top: 5%;
+    opacity: 1;
+}
+
+#buttonContainer{
+    margin-top: 0vh;
+}
+
+.createButton{
+    background-color: #FFFFFF;
+    width: 50vh;
+    height: 50vh;
+    border-radius: 1vh;
+    margin: 2vh;
+    border: none;
+    text-align: center;
+    padding: 2vh;
+    font-size: 4vh;
+    color: #11151C;
+    font-weight: bold;
+}
+
+.createButton:hover{
+    background-color: #364156;
+    color:#FFFFFF;
+    cursor: pointer;
+}
+
+.buttonImg{
+    width: 20vh;
+    height: 20vh;
+    margin-bottom: 1vw;
+}

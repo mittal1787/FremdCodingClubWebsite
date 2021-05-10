@@ -1,0 +1,59 @@
+body {
+    background: url("../Images/frq.png");
+    height:100vh;
+    backdrop-filter: blur(4px);
+    /* Center and scale the image nicely */
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+  }
+
+  #mainSection{
+    border-radius: 2vw;
+    position: absolute;
+    width: 60vw;
+    margin-top: 5%;
+    margin-left: 20%;
+    margin-right: 20%;
+    margin-bottom: 20%;
+    font-size: 1.5vw;
+    padding-left: 2vw;
+    padding-right: 2vw;
+    padding-top: 2vh;
+    padding-bottom: 2vh;
+    color: #ffffff;
+    font-weight: bolder;
+    background-color: #364156;
+    font-family: 'Poppins', sans-serif;
+}
+
+#questionSetHeader{
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  padding-bottom: 2vh;
+}
+
+.questionSetButton{
+    outline: none;
+    width: 50vw;
+    height: 6vh;
+    background-color: #212D40 ;
+    color: #D66853  ;
+    border: none;
+    font-weight: 700;
+    font-size: large;
+    margin-left: 5vw;
+    margin-bottom: 0.5vw;
+    margin-right: 3vw;
+}
+
+.questionSetButton:hover{
+  transition-duration: .3s;
+  color: #212D40;
+  background-color: #D66853 ;
+  font-weight: bolder;
+}
+
+.questionHeader{
+  color: #D66853
+}
