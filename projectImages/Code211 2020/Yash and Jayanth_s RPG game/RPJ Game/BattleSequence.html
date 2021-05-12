@@ -1,0 +1,98 @@
+<!doctype html>
+<html>
+    <head>
+        <title>Battle Sequence</title>
+        <style>
+            body {
+                background-image: url(iu.png);
+                background-size: 1366px 768px;
+				background-repeat: no-repeat;
+            }
+            .hero {
+                position: absolute;
+                top: 400px;
+                left: 400px;
+            }
+            .enemy {
+                position: absolute;
+                top: 150px;
+                left: 700px;
+            }
+            .heroPicture {
+                width: 320px;
+                height: 240px;
+            }
+            .enemyPicture {
+                width: 320px;
+                height: 240px;
+            }
+            .heroHealth {
+                position: absolute;
+                top: 400px;;
+                left: 100px;
+                width: 320px;
+                height: 25px;
+                border: solid 2px;
+            }
+            .enemyHealth {
+                position: absolute;
+                top: 170px;
+                left: 1000px;
+                width: 320px;
+                height: 25px;
+                border: solid 2px;
+            }
+            .textBox {
+                border: solid 5px;
+                background-color: white;
+                position: absolute;
+                top: 500px;
+                left: 750px;
+                width: 550px;
+                height: 150px;
+            }
+			
+			.button{
+				text-decoration: underline;
+				position: sticky;
+				top: 0;
+				text-align: center;
+				color: gray;
+				padding: 15px;
+				margin-right: 20px;
+				font-size: 16px;
+				font-family: 'Alegreya Sans';
+			}
+			
+			.button:hover {
+				transition-duration: .5s;
+				color: white;
+				background-color: black
+			}
+		
+        </style>
+    </head>
+    <body>
+       <div id = "battle" class = "battle" >
+        <div id="hero" class="hero">
+            <img src="mainUp1.png" class="heroPicture">
+        </div>
+        <div id="enemy" class="enemy">
+            <img src="1down.png" class="enemyPicture">
+        </div>
+        <div id="heroHealth">
+            <img src="iu-2.png" class="heroHealth">
+        </div>
+        <div id="enemyHealth">
+            <img src="iu-2.png" class="enemyHealth">
+        </div>
+        <div id="textBox" class="textBox">
+			<input type="button" class = "button" id="attack" value="Attack">
+			<input type="button" class = "button" id="shield" value="Shield">
+			<input type="button" class = "button" id="shield" value="Escape">
+		</div>
+	</div>
+    </body>
+    <script>
+    </script>
+</html>

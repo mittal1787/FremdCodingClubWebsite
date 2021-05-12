@@ -1,0 +1,453 @@
+<!DOCTYPE html>
+<html>
+<body onload="startGame()">
+<style>
+	body{
+		margin: 0 0;
+		font-family: Tahoma, Geneva, sans-serif;
+	}
+	::selection{
+		background: transparent;
+	}
+	#idBoard{
+		height: 100%;
+		display: grid;
+		grid-template-columns: 8vw 35vw 35vw;
+		grid-gap: 2vw;
+		padding: 10px;
+		margin: .5% 0 0 2%;
+	}
+	#title, #idCode{
+		font-size: 5.75vw;		
+		height: 6vw;
+	}
+	#idText, #idHide{
+		font-size: 2.5vw;
+		height: 3vw;
+		margin: .4vw;
+		color: white;
+	}
+	.round{
+		margin: .3vw;
+		width: 5vw;
+		height: 5vw;
+		border: none;
+		border-radius: 50%;
+		text-align: center;
+		font-size: 3vw;
+		outline: none;
+	}
+	.color{		
+		color: #FFFFFF00;
+	}
+	#redButt{
+		background-color: red;
+	}
+	#orangeButt{
+		background-color: orange;
+	}
+	#yellowButt{
+		background-color: yellow;
+	}
+	#greenButt{
+		background-color: green;
+	}
+	#blueButt{
+		background-color: blue;
+	}
+	#purpleButt{
+		background-color: purple;
+	}
+	#grayButt{
+		background-color: gray;
+	}
+	#playButt{
+		font-size: 30px;
+		color: #FFFFFF;
+		background-color: black;
+	}
+	.hole{
+		background-color: gray;	
+		color: #FFFFFF00;
+	}
+	#check{
+		background-color: black;
+	}
+	.small{
+		margin: none;
+		width: 1.75vw;
+		height: 1.75vw;
+		border: none;
+		border-radius: 50%;
+		text-align: center;
+		font-size: 3.5vw;
+	}
+	.top{		
+		margin: 0 .3vw; 
+		position: relative;
+		top: -1.5vw;
+	}
+	.bot{		
+		margin: 0 .3vw; 
+		position: relative;
+		top: 1vw;
+		left: -4.75vw;
+	}
+	#idHide{		
+		font-size: 2.5vw;	
+		height: 3.5vw;
+	}
+	#idBottom{
+		position: absolute;
+		bottom: 2.5vw;
+		left: 10vw;
+		height: 3vw;
+		font-size: 2.5vw;
+	}
+	.switchbox{
+		position: relative;
+		display: inline-block;
+		height: 2.25vw;
+		width: 3.8vw;
+		top: .7vw;
+		border-radius: 2vw;		
+		background-color: gray;
+	}
+	.switchbox input{
+		opacity: 0;
+	}
+	.slider{
+		position: absolute;
+		top: .4vw;
+		left: .4vw;
+		border-radius: 50%;
+		height: 1.5vw;
+		width: 1.5vw;
+		background-color: white;
+		transition: .5s;
+	}	
+	input:checked + .slider{
+		transform: translateX(1.5vw);
+	}
+	#spacer{
+		width: 3vw;
+		display: inline-block;
+	}
+	#side{
+		position: absolute;
+		height: 100%;
+		width: 17vw;
+		top: 0;
+		right: 0;
+		background-color: #eeeeee;
+		transition: .5s;
+		padding: 1vw;
+	}
+	
+</style>
+<div id="idBoard">
+	<div id="idColors">
+		<input type="button" id="redButt" value="1" class="round color" onClick="clicky('red')">
+		<input type="button" id="orangeButt" value="2" class="round color" onClick="clicky('orange')">
+		<input type="button" id="yellowButt" value="3" class="round color" onClick="clicky('yellow')">
+		<input type="button" id="greenButt" value="4" class="round color" onClick="clicky('green')">
+		<input type="button" id="blueButt" value="5" class="round color" onClick="clicky('blue')">
+		<input type="button" id="purpleButt" value="6" class="round color" onClick="clicky('purple')">
+		<input type="button" id="grayButt" value="0" class="round color" onClick="clicky('gray')">
+		<input type="button" id="playButt" value="play" class="round" onClick="location.reload()">
+	</div>
+	<div id="col1">
+		<div id="title">Mastermind</div>
+		<div id="idText">Tries: <span id="tries"></span></div>
+		<br>
+		<div id="row1"></div>
+		<div id="row2"></div>
+		<div id="row3"></div>
+		<div id="row4"></div>
+		<div id="row5"></div>
+	</div>
+	<div id="col2">
+		<div id="idHide"></div>
+		<div id="idCode"></div>
+		<br>
+		<div id="row6"></div>
+		<div id="row7"></div>
+		<div id="row8"></div>
+		<div id="row9"></div>
+		<div id="row10"></div>
+	</div>	
+	<div id="idBottom">
+		<span id="spacer"></span>
+		Allow repeats: <label class="switchbox" onClick="generateCode()"><input type="checkbox" id="idRepeats"><span class="slider"></span></label>
+		<span id="spacer"></span><span id="spacer"></span><span id="spacer"></span><span id="spacer"></span><span id="spacer"></span>
+		Allow blanks: <label class="switchbox" onClick="generateCode()"><input type="checkbox" id="idBlanks"><span class="slider"></span></label>
+	</div>
+</div>
+<div id="side">
+</div>
+<script>
+	var instructions = 'Wecome to Mastermind! The game has already started, but the "play" button will restart it if you really screw up.<br><br>I (the computer) have come up with a 4-color code for you to guess. Input your guess into the four gray circles to the left.<br><br>Click one of the leftmost circles to select its color, then one of your own circles to apply it. Alternatively, hover over one of your own circles and press a number from 1-6 to apply the corresponding color, or 0 to set it back to gray. But watch out, you only get 10 tries.<br><br>Once you have your guess, hit the black circle at the end of the row to see your results. Up to four circles may appear. A gray circle indicates a correct color was chosen. A black circle indicates a color is in the correct spot.';
+	var blanks = false;
+	var repeats = false;
+	var color = "none";	
+	var code = [];
+	var input = [];
+	var output = [];
+	var current = 1;
+	
+	side.innerHTML=instructions;
+	
+	// Code citation:
+		// 		Author: W3 Schools
+		//		Accessed: 1/25/2020
+		//		URL: https://www.w3schools.com/js/js_array_sort.asp
+		// 		Purpose: sorts an array randomly
+	function shuffle(array){
+		array.sort(function(a, b){return 0.5 - Math.random()}); 
+	}
+	
+	
+	function generateCode(){
+		repeats = document.getElementById("idRepeats").checked;
+		blanks = document.getElementById("idBlanks").checked;
+		console.log(repeats);
+		console.log(blanks);
+		if (repeats){
+			if (blanks){
+				for (var i = 0; i < 4; i++)
+					code[i] = random(5);
+			}
+			else {
+				for (var i = 0; i < 4; i++)
+					code[i] = random(4) + 1;
+			}
+		}
+		else {
+			var fin = false;
+			var shuffleMe = [1, 2, 3, 4, 5, 6];
+			if (blanks)
+				shuffleMe[6] = 0;
+			shuffle(shuffleMe);
+			for (var i = 0; i < 4; i++)
+					code[i] = shuffleMe[i];
+		}
+		console.log(code);
+	}
+	
+	function random(num){
+		return Math.floor(Math.random() * num);
+	}
+	
+	function fillRow(row){
+		for (var i = 0; i < 4; i++){
+			row.innerHTML+='<input type="button" id=\"hole' + i + '\" value="0" onkeyup="trigger(event, this)" class="round hole" onClick="change(this)" onmouseover="select()">';
+		}
+		row.innerHTML+='<input type="button" id="check" value="c" class="round" onClick="check()" onmouseover="select()">';
+	}
+	
+	function flip(){
+		generateCode();
+	}
+	
+	function trigger(event, hole){
+		if (event.keyCode === 49) {
+			color = "red";
+			change(hole);
+		}
+		else if (event.keyCode === 50) {
+			color = "orange";
+			change(hole);
+		}		
+		else if (event.keyCode === 51) {
+			color = "yellow";
+			change(hole);
+		}
+		else if (event.keyCode === 52) {
+			color = "green";
+			change(hole);
+		}
+		else if (event.keyCode === 53) {
+			color = "blue";
+			change(hole);
+		}
+		else if (event.keyCode === 54) {
+			color = "purple";
+			change(hole);
+		}		
+		else if (event.keyCode === 55) {
+			color = "gray";
+			change(hole);
+		}
+		else if (event.keyCode === 48) {
+			color = "gray";
+			change(hole);
+		}
+	}
+	
+	function startGame(){
+		fillRow(document.getElementById("row1"));
+		generateCode();
+	}
+	
+	function tCheck(event){
+		if (event.keyCode === 13) {
+			check();
+		}
+	}
+	
+	function check(){
+		output = [0, 0, 0, 0];
+		
+		input[0] = document.getElementById("hole0").value;
+		input[1] = document.getElementById("hole1").value;
+		input[2] = document.getElementById("hole2").value;
+		input[3] = document.getElementById("hole3").value;
+		
+		var j;
+		for (var i = 0; i < 4; i++){
+			if (code[i] == input[i]){
+				output[output.indexOf(0)] = 2;
+				j = 4;
+			}
+			else 
+				j = 0;			
+			for (; j < 4; j++){
+				if (code[i] == input[j]){
+					output[output.indexOf(0)] = 1;
+					j = 4;
+				}
+			}	
+		}
+		
+		hole0.removeAttribute("onclick");
+		hole0.removeAttribute("onkeyup");
+		hole0.removeAttribute("onmouseover");
+		hole0.id = "idNone";
+		
+		hole1.removeAttribute("onclick");
+		hole1.removeAttribute("onkeyup");
+		hole1.onmouseover = null;
+		hole1.id = "idNone";
+		
+		hole2.removeAttribute("onclick");
+		hole2.removeAttribute("onkeyup");
+		hole2.onmouseover = null;
+		hole2.id = "idNone";
+		
+		hole3.removeAttribute("onclick");
+		hole3.removeAttribute("onkeyup");
+		hole3.onmouseover = null;
+		hole3.id = "idNone";
+		
+		document.getElementById("check").remove();
+		
+		row = document.getElementById("row" + current);
+		row.innerHTML+='<span id="box" class="short"></span>';
+		
+		var correct = 0;
+		output.sort();
+		
+		for (var i = 3; i >= 0; i--){
+			var val = output[i];			
+			if (i > 1){ 
+				if (val == 0)
+					box.innerHTML += '<input type="button" style="background-color: white" class="small top">';
+				else if (val == 1)
+					box.innerHTML += '<input type="button" style="background-color: gray" class="small top">';
+				else {				
+					box.innerHTML += '<input type="button" style="background-color: black" class="small top">';
+					correct++;
+				}
+			}
+			else {
+				if (val == 0)
+					box.innerHTML += '<input type="button" style="background-color: white" class="small bot">';
+				else if (val == 1)
+					box.innerHTML += '<input type="button" style="background-color: gray" class="small bot">';
+				else {				
+					box.innerHTML += '<input type="button" style="background-color: black" class="small bot">';
+					correct++;
+				}
+			}
+		}
+		
+		box.id = "idNone";
+		
+		if (correct != 4){
+			if (current < 10){ 
+				current++;
+				fillRow(document.getElementById("row" + current));
+				tries.innerHTML=current-1;
+			}
+			else {
+				idText.innerHTML = "Maybe next time!";
+				showCode();
+			}
+		}
+		else {
+			console.log("os");
+			var message = "Code cracked after " + current;
+			if (current == 1)
+				message += " try!";
+			else 
+				message += " tries!";
+			idText.innerHTML = message;
+			showCode();
+		}
+		idText.style.color = "black";
+	}
+	
+	function showCode(){
+		idHide.innerHTML = "Code:";
+		for (var i = 0; i < 4; i++){
+			val = code[i];
+			if (val == 1)
+				idCode.innerHTML += '<input type="button" style="background-color: red" class="round color">';
+			else if (val == 2)
+				idCode.innerHTML += '<input type="button" style="background-color: orange" class="round color">';
+			else if (val == 3)
+				idCode.innerHTML += '<input type="button" style="background-color: yellow" class="round color">';
+			else if (val == 4)
+				idCode.innerHTML += '<input type="button" style="background-color: green" class="round color">';
+			else if (val == 5)
+				idCode.innerHTML += '<input type="button" style="background-color: blue" class="round color">';
+			else if (val == 6)
+				idCode.innerHTML += '<input type="button" style="background-color: purple" class="round color">';
+			else
+				idCode.innerHTML += '<input type="button" style="background-color: gray" class="round color">';
+			console.log(val);
+		}
+	}
+	
+	function clicky(input){
+		color=input;
+	}
+	
+	function change(hole){		
+		hole.style.backgroundColor=color;
+		hole.value=findVal().toString();	
+	}
+	
+	function findVal(){
+		if (color == "red")
+			return 1;
+		else if (color == "orange")
+			return 2;
+		else if (color == "yellow")
+			return 3;
+		else if (color == "green")
+			return 4;
+		else if (color == "blue")
+			return 5;
+		else if (color == "purple")
+			return 6;
+		else	
+			return 0;
+	}
+	
+</script>
+
+</body>
+</html>
+
+</html>

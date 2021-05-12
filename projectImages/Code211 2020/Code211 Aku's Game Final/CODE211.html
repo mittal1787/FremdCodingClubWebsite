@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html>
+	<head>
+			<style>
+				body {
+				background-color: #F4AE2A;
+				}
+				
+				.textBox {
+				margin: 0 auto;
+				background-color: black;
+				font-family: 'orange kid'; 
+				color: orange;
+				text-align: center;
+				border: 5px;
+				border-color: green;
+				border-style: double;
+				width: 98vw;
+				height: 20vh;
+				font-size: 54px;
+				}
+				@font-face {
+					font-family: 'orange kid';
+					src: url('orange kid.TTF') format('truetype');
+				}
+				.buttonHover:hover {
+				padding: 50px;
+				box-shadow: 4px 4px 4px;
+				background-color: #EADA4A;
+				}
+				@keyframes openingFrames {
+					0%
+						{transform: scale(0);}
+						
+						
+					100%
+						{transform: scale(1);}
+				
+				}
+				@keyframes loading {
+					0%
+						{width: 0px;}
+					40%, 45%
+						{width: 45px;}
+					60%, 80%
+						{width: 168px;}
+					80%, 96%
+						{width: 190px;}
+					96%, 100%
+						{width: 200px;}
+				
+				}
+					.box {
+					display: inline-block;
+					background-color: #EADA4A;
+					width: 50vw;
+					height: 75vh;
+					position: relative;
+					text-align: right;
+					font-family: 'orange kid';
+					font-size: 300px;
+					
+					animation-name: openingFrames;
+					animation-duration: 300ms;
+					animation-timing-function: ease-in-out;
+					animation-delay: 0ms;
+					animation-iteration-count: 1;
+					animation-direction: normal;
+					animation-fill-mode: forwards;
+					
+				}
+				.loading {
+					display: inline-block;
+					background-color: white;
+					width: 200px;
+					height: 40px;
+					position: fixed;
+					
+				
+					
+					animation-name: loading;
+					animation-duration: 5s;
+					animation-timing-function: ease-in-out;
+					animation-iteration-count: 1;
+					animation-direction: normal;
+					animation-fill-mode: forwards;
+				}
+				
+				.buttonGame {
+					background-color: white;
+					width: 100vw;
+					height: 100vh;
+					position: relative;
+					font-family: 'orange kid';
+					font-size: 52px;
+				}
+				
+				.button0{
+					position: absolute;
+					left: 1250px;
+					top: 20px;
+					width: 20vw;
+					height: 10vh;
+					border: 2px solid black;
+					background-color: #b22222;
+					font-family: 'orange kid';
+					font-size: 20px;
+				} 
+				
+				.button1{
+					position: absolute;
+					left: 1250px;
+					width: 20vw;
+					height: 10vh;
+					border: 2px solid black;
+					background-color: #b22222;
+					font-family: 'orange kid';
+					font-size: 20px;
+					bottom: 10px;
+				} 
+	
+				.button2{
+					position: absolute;
+					left: 10px;
+					top: 20px;
+					width: 20vw;
+					height: 10vh;
+					border: 2px solid black;
+					background-color: #b22222;
+					font-family: 'orange kid';
+					font-size: 20px;
+				} 
+				
+				.button3{
+					position: absolute;
+					left: 10px;
+					bottom: 10px;
+					width: 20vw;
+					height: 10vh;
+					border: 2px solid black;
+					background-color: #b22222;
+					font-family: 'orange kid';
+					font-size: 20px;
+				} 
+				
+				.newButton{
+					width: 20vw;
+					height: 10vh;
+					border: 2px solid black;
+					background-color: #F1BC31;
+					position: fixed;
+					left: 40vw;
+					top: 45vh;
+					font-family: 'orange kid';
+					font-size: 20px;
+				}
+				
+				.stageTwoButton{
+					width: 20vw;
+					height: 10vh;
+					border: 2px solid black;
+					background-color: #e25822;
+					font-family: 'orange kid';
+					font-size: 20px;
+					display: inline-block;
+				}
+				
+				.pranked{
+					width: 20vw;
+					height: 10vh;
+					border: 2px solid black;
+					background-color: #FFFFFF;
+					font-family: 'orange kid';
+					font-size: 20px;
+					display: inline-block;
+				}
+				
+				.center{
+					position: fixed;
+					left: 20vw;
+					top: 40vh;
+				}
+				
+				.clickButtonMessage{
+					font-family: 'orange kid';
+					font-size: 50px;
+					color: #FFFFFF;
+					text-align: center;
+				}
+				
+				.villainImage{
+					top: 0vh;
+					width: 100vw;
+					height: 100vh;
+				}
+				
+					@keyframes movingTarget {
+					0%, 25%
+						{left: 1250px;}
+						{top: 40px;}
+						{width: 20vw;}
+						{height: 10vh;}
+						
+						
+					25%, 37.5%
+						{left: 10px;}
+						{bottom: 10px;}
+						{width: 20vw;}
+						{height: 10vh;}
+					
+					37.5%, 50%
+						{left: 10px;}
+						{top: 40px;}
+						{width: 20vw;}
+						{height: 10vh;}
+					
+					50%, 62.5%
+						{left: 1250px;}
+						{top: 20px;}
+						{width: 20vw;}
+						{height: 10vh;}
+					
+					62.5%, 75%
+						{left: 1250px;}
+						{width: 20vw;}
+						{height: 10vh;}
+						{bottom: 10px;}
+					
+					75%, 100%
+						{left: 10px;}
+						{top: 40px;}
+						{width: 20vw;}
+						{height: 10vh;}
+					
+				}
+				.buttonanime{
+					position: absolute;
+					left: 1250px;
+					top: 20px;
+					width: 20vw;
+					height: 10vh;
+					border: 2px solid black;
+					background-color: orange;
+					font-family: 'orange kid';
+					font-size: 20px;
+					
+					animation-name: movingTarget;
+					animation-duration: 8s;
+					animation-timing-function: ease-in-out;
+					animation-delay: 0ms;
+					animation-iteration-count: infinite;
+					animation-direction: normal;
+					animation-fill-mode: forwards;
+				} 
+				
+					.buttonFive{
+		 position: fixed;
+		left: 973px;
+		top: 10;
+							width: 20vw;
+					height: 10vh;
+					border: 2px solid black;
+					background-color: #b22222;
+					font-family: 'orange kid';
+					font-size: 20px;
+	} 
+	
+			</style>
+			<script>
+				function clearText() {
+				document.getElementById('textBoxId').innerHTML="";
+				}
+				function clearBox() {
+				document.getElementById('boxId').innerHTML="";
+				document.getElementById('boxId').style.background = "#F4AE2A";
+				}
+				
+				
+				function firstText() {
+				document.getElementById('textBoxId').innerHTML="Uhh..";
+				}
+				function secondText() {
+				document.getElementById('textBoxId').innerHTML="This wasn't supposed to happen..";
+				}
+				
+				function whiteBox() {
+				document.getElementById('boxId').style.background = "white";
+				}
+				function firstSecondText() {
+				document.getElementById('textBoxId').innerHTML="Yeah something is broken. Hold on.";
+				}
+				function reboot() {
+				document.getElementById('boxId').style.width = "100vw";
+				document.getElementById('boxId').style.height = "100vh";
+				document.getElementById('boxId').style.background = "black";
+				document.body.style.backgroundColor = "black";
+				var element = document.getElementById("textBoxId");
+				element.classList.remove("textBox");
+				document.getElementById('boxId').style.color = "white";
+				document.getElementById('boxId').style.fontSize = "52px";
+				document.getElementById('boxId').style.textAlign = "center";
+				
+				document.getElementById('boxId').innerHTML = "<br><br><br><br><br>RƎB00TING<br><div class= 'loading'></div>";
+				}
+				
+				function buttonGame() {
+					idClickButtonMessage.innerHTML = "Click the Button!"
+					boxId.innerHTML = " "
+					boxId.className = " "
+					textBoxId.innerHTML = ""					
+					idNewButtonContainer.innerHTML = "<input id = 'idNewButton' type = 'button' class = 'newButton' value = 'the button' onClick = 'displayStageTwoVillain()'>"
+				}
+								
+				function stageTwo(){
+					idClickButtonMessage.innerHTML = "Click the Button!"
+					stageTwoButtonContainer.className = "center"
+					stageTwoButtonContainer.innerHTML = "<input id = 'idStageTwoButton1' type = 'button' class = 'stageTwoButton' value = 'the button' onClick = 'prank1()'><input id = 'idStageTwoButton2' type = 'button' class = 'stageTwoButton' value = 'the button' onClick = 'prank2()'><input id = 'idStageTwoButton' type = 'button' class = 'stageTwoButton' value = 'the button' onClick = 'displayStageThreeVillain()'><br><input id = 'idStageTwoButton3' type = 'button' class = 'stageTwoButton' value = 'the button' onClick = 'prank3()'><input id = 'idStageTwoButton4' type = 'button' class = 'stageTwoButton' value = 'the button' onClick = 'prank4()'><input id = 'idStageTwoButton5' type = 'button' class = 'stageTwoButton' value = 'the button' onClick = 'prank5()'>"
+				}
+				
+				function displayStageTwoVillain(){
+					idVillainImage.innerHTML = '<img  class = "villainImage" id = "VillainStageTwo" src ="StageTwoVillain.gif.gif">'
+					idNewButtonContainer.innerHTML = ""
+					idClickButtonMessage.innerHTML = ""
+					setTimeout(removeVillain, 4500)
+					setTimeout(stageTwo, 4500)
+					boxId.innerHTML = ""
+					boxId.style = ""
+					textBoxId.innerHTML = ""
+				}
+				
+				function removeVillain(){
+					idVillainImage.innerHTML = ""
+				}
+				
+								
+
+
+				
+				function prank1(){
+					idStageTwoButton1.value = "Haha! This is a fake button, you got pranked!"
+					idStageTwoButton1.className = "pranked"
+				}
+				
+				function prank2(){
+					idStageTwoButton2.value = "Haha! This is a fake button, you got pranked!"
+					idStageTwoButton2.className = "pranked"
+				}
+				
+				function prank3(){
+					idStageTwoButton3.value = "Haha! This is a fake button, you got pranked!"
+					idStageTwoButton3.className = "pranked"
+					
+				}
+				
+				function prank4(){
+					idStageTwoButton4.value = "Haha! This is a fake button, you got pranked!"
+					idStageTwoButton4.className = "pranked"
+					
+				}	
+
+				function prank5(){
+					idStageTwoButton5.value = "Haha! This is a fake button, you got pranked!"
+					idStageTwoButton5.className = "pranked"
+				}
+				
+				function stageThree(){
+				stageTwoButtonContainer.innerHTML = ""
+				idClickButtonMessage.innerHTML = "Click the Button!"
+				move()
+				}
+				
+				function displayStageThreeVillain(){
+					idVillainImage.innerHTML = '<img  class = "villainImage" id = "VillainStageThree" src ="VillainThree.jpg">'
+					stageTwoButtonContainer.innerHTML = ""
+					idClickButtonMessage.innerHTML = ""
+					setTimeout(removeVillain, 4500)
+					setTimeout(stageThree, 4500)
+					boxId.innerHTML = ""
+					boxId.style = ""
+					textBoxId.innerHTML = ""
+				}
+				var stop = ""			
+		
+		
+		function move() { 
+			var location = randomInt(0,3)
+			var buttonSpot = ""
+			if ( location == 0){
+				buttonSpot += "<input type='button' class= 'button0' value= 'the button' onClick = 'displayStageFourVillain()'>"
+			}
+			else if (location == 1){
+				buttonSpot += "<input type='button' class= 'button1' value= 'the button' onClick = 'displayStageFourVillain()'>"
+			}
+			else if (location == 2){
+				buttonSpot += "<input type='button' class= 'button2' value= 'the button' onClick = 'displayStageFourVillain()'>"
+			}
+			else if (location == 3){
+				buttonSpot += "<input type='button' class= 'button3' value= 'the button' onClick = 'displayStageFourVillain()'>"
+			}
+			idButtonLocation.innerHTML = "";
+			idButtonLocation.innerHTML += buttonSpot;
+			if (stop == "timetostop"){
+				idButtonLocation.innerHTML = ""
+				return stop
+			}
+			else{
+				setTimeout(move, 750)
+			}
+		}				
+		
+				function displayStageFourVillain(){
+					idVillainImage.innerHTML = '<img class = "villainImage" id = "VillainStageThree" src ="VillainFour.jpg">'
+					stop = "timetostop"
+					idButtonLocation.innerHTML = ""
+					idClickButtonMessage.innerHTML = ""
+					setTimeout(removeVillain, 4500)
+					setTimeout(stageFour, 4500)
+					boxId.innerHTML = ""
+					boxId.style = ""
+					textBoxId.innerHTML = ""
+				}		
+		
+			
+		function stageFour(){
+			idClickButtonMessage.innerHTML = "Click the Button!"
+				var buttonSpotFour = ""
+				
+				buttonSpotFour += "<input type='button' class= 'buttonanime' value= 'the button' onClick = 'displayStageFiveVillain()'>"
+				
+				idButtonLocationFour.innerHTML = "";
+				idButtonLocationFour.innerHTML += buttonSpotFour;	
+		}
+		
+				function displayStageFiveVillain(){
+					idVillainImage.innerHTML = '<img  class = "villainImage" id = "VillainStageThree" src ="VillainFive.png">'
+					idButtonLocationFour.innerHTML = ""
+					idClickButtonMessage.innerHTML = ""
+					setTimeout(removeVillainStageFive, 4500)
+					setTimeout(stageFive, 4500)
+					boxId.innerHTML = ""
+					boxId.style = ""
+					textBoxId.innerHTML = ""
+				}			
+
+				function removeVillainStageFive(){
+					idVillainImage.innerHTML = ""
+							idClickButtonMessage.innerHTML = "Click the Button!"
+			idButtonLocationFive.innerHTML = '<input id = "buttonIdFive" type="button" class= "buttonFive" value= "the button" onmouseover= "stageFive()" onClick = "win()">'
+			stageFive()
+				}				
+		
+		function stageFive(){
+			console.log(stop)
+			var randomLeft
+			randomLeft = randomInt(1,1200);
+						randomLeft += "px"
+
+			var randomTop 
+			randomTop = randomInt(1,500);
+			randomTop += "px"
+			
+			console.log(randomTop)
+			console.log(randomLeft)
+			buttonIdFive.style.left = randomLeft;
+			buttonIdFive.style.top = randomTop;
+		}
+		
+		function win(){
+			idVillainImage.innerHTML = '<img  class = "villainImage" id = "VillainStageThree" src ="AkuSad.png">'
+			idClickButtonMessage.innerHTML = ""
+			buttonIdFive.innerHTML = ""
+		}
+		
+		function randomInt(min, max) {
+				min = Math.ceil(min);
+				max = Math.floor(max);
+				return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+		}
+				function firstTextTimer() {
+				setTimeout(firstText, 2000)
+				setTimeout(secondText, 5000)
+				setTimeout(clearText, 7000)
+				setTimeout(clearBox, 7500)
+				setTimeout(secondTextTimer, 8000)
+				}
+				
+				function secondTextTimer() {
+				setTimeout(whiteBox, 0)
+				setTimeout(clearBox, 1000)
+				setTimeout(whiteBox, 1300)
+				setTimeout(clearBox, 1600)
+				setTimeout(firstSecondText, 2000)
+				setTimeout(clearText, 4000)
+				setTimeout(reboot, 4500)
+				setTimeout(buttonGame, 10000)
+				}
+				
+			</script>
+	</head>
+	<body onLoad= "firstTextTimer()">
+	<div id = "idClickButtonMessage" class = "clickButtonMessage"></div>
+	<div class= "box" id = "boxId">Welc</div>
+	<div class= "textBox" id= "textBoxId"></div>
+	<div id = "idNewButtonContainer"></div>
+	<div id = "stageTwoButtonContainer"></div>
+	<div id = "idVillainImage"></div>
+	<div id ="idButtonLocation"></div>
+	<div id ="idButtonLocationFour"></div>
+		<div id ="idButtonLocationFive"></div>
+
+	</body>
+	
+
+</html>

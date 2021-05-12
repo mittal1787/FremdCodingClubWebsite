@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<style>
+		body{
+			margin: 0px;
+		}
+		
+	</style>
+
+</head>
+<body onload = "start()">
+	<img id = "grass1" src="grass.png" style = "display: none"></img>
+    <img id = "ground1" src="ground.png" style = "display: none"></img>
+    <img id = "grass2" src="grass2.png" style = "display: none"></img>
+    <img id = "ground2" src="ground2.png" style = "display: none"></img>
+    <canvas id="myCanvas"></canvas>
+
+	<script>
+	
+	var px = 0;
+    var py = 0;
+    var width = window.innerWidth / 15;
+    var height = this.width * 1.5;
+    var level = 1;
+    var health = 15 + this.level * 5;
+    var damage = this.level * 5;
+	var fighting = false
+	var heroDecrease
+	var xp = 0;
+
+    var img = new Image();
+	img.src = "mainDown1.png"
+	var back1 = new Image();
+	back1.src = "back1.png"
+	var down1 = new Image();
+	down1.src = "1down.png"
+
+    var leftPress = false;
+    var rightPress = false;
+    var upPress = false;
+    var downPress = false;
+	var upPress, downPress, leftPress, rightPress = false;
+	
+	var enemy1
+	var enemy2
+	var enemy3
+	var enemy4
+	var enemy5
+	var enemy6
+	var enemy7
+	var enemy8
+	
+	var currentEnemy;
+	var enemyDecrease;
+	
+	var ctx;
+	var canvas
+	
+	function start()
+	{
+		
+		canvas = document.getElementById("myCanvas");
+		ctx = canvas.getContext("2d");
+
+		canvas.width = window.innerWidth * .99
+		canvas.height = window.innerHeight * .99
+
+		window.addEventListener("keydown", keydown)
+		window.addEventListener("keyup", keyup)
+		requestAnimationFrame(game)
+		setInterval(animate, 125)
+		
+		enemy1 = new enemy(canvas.width/2, canvas.height/2, 25, 5, down1);
+		enemy2 = new enemy(canvas.width/3, canvas.height/4, 15, 3, down1);
+		enemy3 = new enemy(canvas.width*.75, canvas.height/4, 20, 5, down1);
+		enemy4 = new enemy(canvas.width/3, canvas.height*.75, 10, 2, down1);
+		enemy5 = new enemy(canvas.width*.75, canvas.height*.75, 15, 3, down1);
+	}
+	
+	function game()
+	{
+		
+		ctx.drawImage(back1, 0, 0, window.innerWidth, window.innerHeight);
+		ctx.drawImage(img, px, py, width, height);
+		ctx.font = "30px Arial";
+		ctx.fillStyle = "white"
+		ctx.fillText("Current Level: " + level, 25, 25)
+		enemy1.update()
+		enemy2.update()
+		enemy3.update()
+		enemy4.update()
+		enemy5.update()
+		
+		player()
+		requestAnimationFrame(game)
+		
+		
+	}
+	
+	
+	function enemy(x, y, health, damage, img)
+	{
+		this.x = x;
+		this.y = y;
+		this.health = health;
+		this.damage = damage;
+		this.img = img;
+		this.defeated = false;
+		
+		this.update = function()
+		{
+			ctx.drawImage(this.img, this.x, this.y, width, height)
+			
+			if((px < this.x + width && px + width > this.x) && 
+				(py + height > this.y && py < this.y + height))
+				
+			{
+				if(!fighting)
+					battle(this)
+			}
+		}
+	}
+	
+	function battle(enemy)
+	{
+		fighting = true;
+		leftPress = false;
+		rightPress = false;
+		upPress = false;
+		downPress = false;
+		console.log("fight")
+		document.getElementById("myCanvas").style.display = "none";
+		document.getElementById("battle").style.display = "inline-block"
+		currentEnemy = enemy;
+		updateHealth()
+		
+		p.innerHTML = "What action would you like to perform?"
+	}
+	
+	function attack()
+	{
+		currentEnemy.health -= damage;
+		p.innerHTML = "You delt " + damage + " damage!"
+		if(currentEnemy.health <= 0)
+			currentEnemy.health = 0;
+		updateHealth()
+		if(currentEnemy.health <= 0)
+		{
+			textBox.innerHTML = "<br>You defeated the enemy! You gained 5xp!<br>" +
+			'<input type="button" class = "button" id="continue" value="Continue"'+'onClick = "endBattle()">'
+			currentEnemy.defeated = true;
+			xp += 5;
+			if(xp >= level*10)
+			{
+				alert("You've leveled up! Health and Damage have increased!")
+				xp = 0;
+				level++; 
+				health = 15 + this.level * 5;
+				damage = this.level * 5;
+			}
+			
+			
+			
+		}
+		else
+			enemyAttack()
+			
+		
+	}
+	
+	function shield()
+	{
+		health -= Math.floor(currentEnemy.damage/2);
+		p.innerHTML = "<br>You blocked the attack! The enemy delt " + Math.floor(currentEnemy.damage/2) + " damage. You gained 1 xp"
+		if(health<= 0 )
+			health = 0;
+		updateHealth();
+		if(health<= 0 )
+			death()
+		updateHealth();
+		xp++
+		if(xp >= level*10)
+			{
+				alert("You've leveled up! Health and Damage have increased!")
+				xp = 0;
+				level++; 
+				health = 15 + this.level * 5;
+				damage = this.level * 5;
+			}
+		
+	}
+	
+	function escape()
+	{
+		textBox.innerHTML = "<br>You have escaped the enemy! You lost 5xp!<br>" +
+			'<input type="button" class = "button" id="continue" value="Continue"'+'onClick = "escapeBattle()">'
+		
+	}
+	
+	function escapeBattle()
+	{
+		px = px - 10
+		py = py - 10
+		document.getElementById("battle").style.display = "none";
+		document.getElementById("myCanvas").style.display = "inline-block";
+		fighting = false;
+		textBox.innerHTML = '<input type="button" class = "button" id="attack" value="Attack" onClick = "attack()"><input type="button" class = "button" id="shield" value="Shield" onClick = "shield()"><input type="button" class = "button" id="shield" value="Escape" onClick = "escape()"><br><br><p id = "p"></p>'
+		health = 15 + this.level * 5;
+		damage = this.level * 5;
+	}
+	
+	
+	function endBattle()
+	{
+		currentEnemy.x = -500
+		currentEnemy.y = -500
+		document.getElementById("battle").style.display = "none";
+		document.getElementById("myCanvas").style.display = "inline-block";
+		fighting = false;
+		textBox.innerHTML = '<input type="button" class = "button" id="attack" value="Attack" onClick = "attack()"><input type="button" class = "button" id="shield" value="Shield" onClick = "shield()"><input type="button" class = "button" id="shield" value="Escape" onClick = "escape()"><br><br><p id = "p"></p>'
+		health = 15 + this.level * 5;
+		damage = this.level * 5;
+	}
+	
+	function enemyAttack()
+	{
+		health -= currentEnemy.damage;
+		p.innerHTML += "<br>The enemy delt " + currentEnemy.damage + " damage!"
+		if(health<= 0 )
+			health = 0;
+		updateHealth();
+		if(health<= 0 )
+			death()
+		
+	}
+	
+	function death()
+	{
+		textBox.innerHTML = "<br>GameOver";
+	}
+	
+	function updateHealth()
+	{
+		heroHealth.innerHTML = health
+		enemyHealth.innerHTML = currentEnemy.health
+	}
+	
+	function player()
+	{
+		if(upPress)
+			py -= window.innerHeight/100;
+		
+		else if(downPress)
+			py += window.innerHeight/100;
+		
+		else if(leftPress)
+			px -= window.innerHeight/100;
+		
+		else if(rightPress)
+			px += window.innerHeight/100;
+		
+		if(py <= 0)
+			py = 0;
+			
+		if(py + height >= window.innerHeight)
+			py = window.innerHeight - height;
+			
+		if(px <= 0)
+			px = 0;
+			
+		if(px + width >= window.innerWidth)
+			px = window.innerWidth - width;
+	}
+	
+	function animate()
+	{
+		if(upPress)
+		{
+			goUp();
+		}
+		
+		else if(downPress)
+		{
+			goDown();
+		}
+		
+		else if(leftPress)
+		{
+			goLeft();
+		}
+		
+		else if(rightPress)
+		{
+			goRight();
+		}
+	}
+	
+	function goDown()
+	{
+		
+		if(img.src.includes("mainDown1.png"))
+			img.src = "mainDown2.png"
+			
+		else if(img.src.includes("mainDown2.png"))
+			img.src = "mainDown4.png"
+			
+		else if(img.src.includes("mainDown4.png"))
+			img.src = "mainDown3.png"
+			
+		else 
+			img.src = "mainDown1.png"
+			
+			
+	}
+	
+	function goUp()
+	{
+		
+		if(img.src.includes("mainUp1.png"))
+			img.src = "mainUp2.png"
+			
+		else if(img.src.includes("mainUp2.png"))
+			img.src = "mainUp4.png"
+			
+		else if(img.src.includes("mainUp4.png"))
+			img.src = "mainUp3.png"
+			
+		else 
+			img.src = "mainUp1.png"
+			
+	}
+	
+	function goLeft()
+	{
+	
+			if(img.src.includes("mainLeft1.png"))
+				img.src = "mainLeft2.png"
+			
+			else if(img.src.includes("mainLeft2.png"))
+				img.src = "mainLeft3.png"
+			
+			else 
+				img.src = "mainLeft1.png"
+			
+		
+	}
+	
+	function goRight()
+	{
+	
+			if(img.src.includes("mainRight1.png"))
+				img.src = "mainRight2.png"
+				
+			else if(img.src.includes("mainRight2.png"))
+				img.src = "mainRight3.png"
+				
+			else 
+				img.src = "mainRight1.png"	
+	}
+	
+	function keydown(evt)
+	{
+		if(!fighting)
+		{
+			switch(evt.keyCode)
+			{
+				
+					case 37:
+						if(!leftPress && !upPress && !downPress)
+						{
+							img.src = "mainLeft1.png"
+							leftPress = true;
+						}	
+						break;
+					
+					case 38:
+						if(!upPress)
+						{
+							img.src = "mainUp1.png"
+							upPress = true;
+						}
+						break;
+						
+					case 39:
+						if(!rightPress && !upPress && !downPress)
+						{
+							img.src = "mainRight1.png"
+							rightPress = true;
+						}
+						break;
+					
+					case 40:
+						if(!downPress)
+						{
+							img.src = "mainDown1.png"
+							downPress = true;
+						}
+						break;
+				
+			}		
+		}
+	}
+	
+	
+	function keyup(evt)
+	{
+		if(!fighting)
+		{
+			switch(evt.keyCode)
+			{
+			
+				case 37:
+					if(img.src.includes("mainLeft2.png") || img.src.includes("mainLeft3.png"))
+						img.src = "mainLeft1.png"
+					leftPress = false;
+					break;
+				
+				case 38:
+					if(img.src.includes("mainUp2.png") || img.src.includes("mainUp3.png"))
+						img.src = "mainUp1.png"
+					upPress = false;
+					break;
+					
+				case 39:
+					if(img.src.includes("mainRight2.png") || img.src.includes("mainRight3.png"))
+						img.src = "mainRight1.png"
+					rightPress = false;
+					break;
+				
+				case 40:
+					if(img.src.includes("mainDown2.png") || img.src.includes("mainDown3.png"))
+						img.src = "mainDown1.png"
+					downPress = false;
+					break;
+			
+			}
+		}			
+	}
+	
+	
+	</script>	
+	
+	
+ <style>
+            body {
+                background-image: url(iu.png);
+                background-size: 1366px 768px;
+				background-repeat: no-repeat;
+            }
+            .hero {
+                position: absolute;
+                top: 400px;
+                left: 400px;
+            }
+            .enemy {
+                position: absolute;
+                top: 150px;
+                left: 700px;
+            }
+            .heroPicture {
+                width: 320px;
+                height: 240px;
+            }
+            .enemyPicture {
+                width: 320px;
+                height: 240px;
+            }
+            .heroHealth {
+                position: absolute;
+                top: 400px;;
+                left: 300px;
+                width: 100px;
+                height: 25px;
+                border: solid 2px;
+				background-color: white;
+				text-align: center;
+            }
+            .enemyHealth {
+                position: absolute;
+                top: 170px;
+                left: 1000px;
+                width: 100px;
+                height: 25px;
+ 				background-color: white;
+                border: solid 2px;
+            }
+            .textBox {
+                border: solid 5px;
+                background-color: white;
+                position: absolute;
+                top: 500px;
+                left: 750px;
+                width: 548px;
+                height: 150px;
+				text-align: center;
+				
+            }
+			
+			.button{
+				text-decoration: underline;
+				position: sticky;
+				top: 0;
+				text-align: center;
+				color: gray;
+				margin: 0px;
+				padding: 15px;
+				font-size: 16px;
+				font-family: 'Alegreya Sans';
+				width: 180px;
+			}
+			
+			.button:hover {
+				transition-duration: .5s;
+				color: white;
+				background-color: black;
+			}
+			.battle{
+				display: none
+			}
+			
+		
+        </style>
+    </head>
+       <div id = "battle" class = "battle" >
+        <div id="hero" class="hero">
+            <img src="mainUp1.png" class="heroPicture">
+        </div>
+        <div id="enemy" class="enemy">
+            <img src="1down.png" class="enemyPicture">
+        </div>
+        <div id="heroHealth" class = "heroHealth">
+            
+        </div>
+        <div id="enemyHealth" class = "enemyHealth">
+            
+        </div>
+        <div id="textBox" class="textBox">
+			<input type="button" class = "button" id="attack" value="Attack" onClick = "attack()">
+			<input type="button" class = "button" id="shield" value="Shield" onClick = "shield()">
+			<input type="button" class = "button" id="shield" value="Escape" onClick = "escape()">
+			<br><br>
+			<p id = "p"></p>
+		</div>
+	</div>
+	
+</body>
+</html>
