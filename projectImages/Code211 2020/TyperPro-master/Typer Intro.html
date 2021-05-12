@@ -1,0 +1,76 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>Typing game</title>
+	<style>
+	body {
+			padding: 15px 00;
+			text-align: center;
+			background-image: url("backGround.jpg");
+			background-size: 1900px 1000px;
+			font-family: "Lucida Sans Unicode", "Lucida Grande", red serifs;
+			color: Aqua;
+			
+		}
+	</style>
+	<link href='https://fonts.googleapis.com/css?family=Raleway:400,700' rel='stylesheet' type='text/css'>
+</head>
+<script>
+  var temp = document.querySelector('.time');
+ 	var button = document.querySelector("button");
+ 	var words = document.querySelector(".words");
+ 	var timerDiv = document.querySelector(".time");
+ 	var scoreDiv = document.querySelector(".score");
+ 	var points = 0;
+ 	var spans;
+ 	var typed;
+ 	var seconds = 60;
+  var spark = "";
+
+</script>
+<body>
+	<div class="wrapper">
+		<h1>Typer Pro Game </h1>
+		<h2>A Game Made By Eric, Adu, and Yug</h2>
+		<br>
+		<br>
+		<span style="background-color: #000000">Type as many words as you can until time runs out!</span>
+		<br>
+		<br>
+		<button onclick="location.href='ActualTyper.html'">Start</button>
+		<div class="outerWrap">
+			<div class="scoreWrap">
+			<br>
+				<span style="background-color: #000000">Score</span>
+				<br>
+				<br>
+				<span class="score">0</span>
+			</div>
+			<div class="timeWrap">
+				<span style="background-color: #000000">Time left</span>
+				<br>
+				<br>
+				<span class="time">60</span>
+			</div>
+		</div>
+		<div class="wordsWrap">
+			<p class="words"></p>
+		</div>
+		
+		
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
