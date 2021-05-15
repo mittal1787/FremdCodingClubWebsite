@@ -484,7 +484,9 @@
 </div>
 
 <div class="w3-container w3-padding-64 w3-center" style="margin:0 -16px" id="videoLessons">
-  <h1>Videos on cool CS topics</h1>
+  <div class="w3-center">
+    <h1>Videos on cool CS topics</h1>
+  </div>
   <iframe id="videoLesson" width="560" height="315" src="https://www.youtube.com/embed/EF692dBzWAs" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
   <div class="dropdown">
     <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Video Menu
@@ -661,6 +663,21 @@
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-58XLXB9GKH"></script> 
 <script>
+  window.watsonAssistantChatOptions = {
+      integrationID: "8899d0b0-9a52-4078-a773-2067df22a61a", // The ID of this integration.
+      region: "us-south", // The region your integration is hosted in.
+      serviceInstanceID: "25a3a543-2c53-457e-842d-f0c5ecf18b38", // The ID of your service instance.
+      onLoad: function(instance) { instance.render(); }
+    };
+  setTimeout(function(){
+    const t=document.createElement('script');
+    t.src="https://web-chat.global.assistant.watson.appdomain.cloud/loadWatsonAssistantChat.js";
+    document.head.appendChild(t);
+  });
+</script>
+<script>
+ 
+
 var csTopics = new Map();
 csTopics["Computer science is for Everyone"] = "https://youtu.be/FpMNs7H24X0";
 csTopics["Computer Science made me Brave"] = "https://youtu.be/nZ1ehJqXor0";
