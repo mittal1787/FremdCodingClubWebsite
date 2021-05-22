@@ -7,105 +7,146 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
-.w3-row-padding img {margin-bottom: 12px}
-/* Set the width of the sidebar to 120px */
-.w3-sidebar {width: 120px;background: #222;}
-/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
-#main {margin-left: 120px}
-/* Remove margins from "page content" on small screens */
-@media only screen and (max-width: 600px) {#main {margin-left: 0}}
+	body,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: "Montserrat", sans-serif
+	}
+
+	#left-align {
+		text-align: left;
+	}
+
+	.w3-row-padding img {
+		margin-bottom: 12px
+	}
+
+	/* Set the width of the sidebar to 120px */
+	.w3-sidebar {
+		width: 120px;
+		background: #222;
+	}
+
+	/* Add a left margin to the "page content" that matches the width of the sidebar (120px) */
+	#main {
+		margin-left: 120px
+	}
+
+	/* Remove margins from "page content" on small screens */
+	@media only screen and (max-width: 600px) {
+		#main {
+			margin-left: 0
+		}
+	}
+
+	#reversible {
+		display: flex;
+		align-items: flex-start;
+		flex-direction: column-reverse;
+	}
 </style>
+
 <body class="w3-black">
-<script>
-  function resizeIframe(obj) {
+	<script>
+		function resizeIframe(obj) {
     obj.style.height = obj.contentWindow.document.documentElement.scrollHeight + 'px';
   }
-</script>
-<!-- Icon Bar (Sidebar - hidden on small screens) -->
-<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
-  <!-- Avatar image in top left corner -->
-  <a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
-    <i class="fa fa-home w3-xxlarge"></i>
-    <p>HOME</p>
-  </a>
-  <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-user w3-xxlarge"></i>
-    <p>ABOUT</p>
-  </a>
-  <a href="#CAC-2017" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/congressional-app-challenge.png" style="width:100%">
-    <p>Congressional App Challenge 2017 Projects</p>
-  </a>
-  <a href="#code211-2018" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/code211.jpg" style="width:100%">
-    <p>Code211 2018 Projects</p>
-  </a>
-  <a href="#hackChicago-2018" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/hackChicago.svg" style="width:100%">
-    <p>Hack Chicago 2018 Projects</p>
-  </a>
-  <a href="#TadHACK-2018" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/TadHack.png" style="width:100%">
-    <p>TadHACK 2018 Projects</p>
-  </a>
-  <a href="#code211-2019" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/code211.jpg" style="width:100%">
-    <p>Code211 2019 Projects</p>
-  </a>
-  <a href="#windyCityHacks" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/WindyCityHacks.png" style="width:100%">
-    <p>Windy City Hacks Projects</p>
-  </a>
-  <a href="#TadHACK-2019" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/TadHack.png" style="width:100%">
-    <p>TadHACK 2019 Projects</p>
-  </a>
-  <a href="#code211-2020" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/code211.jpg" style="width:100%">
-    <p>Code211 2020 Projects</p>
-  </a>
-  <a href="#MIT-COVID19-Challenge" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/MITCOVID19Challenge.png" style="width:100%">
-    <p>MIT COVID-19 Challenge Projects</p>
-  </a>
-  <a href="#teens-take-on-covid" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/047/532/datas/medium.jpg" style="width:100%">
-    <p>Teens take on COVID Projects</p>
-  </a>
-  <a href="#hackTheLib" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/138/357/datas/medium.jpg" style="width:100%">
-    <p>HackTheLib Projects</p>
-  </a>
-  <a href="#COVID-hacks" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/167/651/datas/medium.jpg" style="width:100%">
-    <p>COVID Hacks Projects</p>
-  </a>
-  <a href="#codeLinc" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/090/755/datas/medium.png" style="width:100%">
-    <p>codeLinc 7.0 Projects</p>
-  </a>
-  <a href="#hackMIT" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/HackMIT.png" style="width:100%">
-    <p>HackMIT Projects</p>
-  </a>
-  <a href="#TadHACK-2020" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/TadHack.png" style="width:100%">
-    <p>TadHACK 2020 Projects</p>
-  </a>
-  <a href="#hackTheLib-NewYear" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/303/271/datas/medium.png" style="width:100%">
-    <p>HackTheLib "2021 New Year Hack" Projects</p>
-  </a>
-  <a href="#kaggle" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <img src="competitions/kaggle.png" style="width:100%">
-    <p>Kaggle Team Projects</p>
-  </a>
-  <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
-    <i class="fa fa-envelope w3-xxlarge"></i>
-    <p>CONTACT</p>
-  </a>
-</nav>
+	</script>
+	<!-- Icon Bar (Sidebar - hidden on small screens) -->
+	<nav class="w3-sidebar w3-bar-block w3-small w3-hide-small w3-center">
+		<!-- Avatar image in top left corner -->
+    <a href="index.html" class="w3-bar-item w3-button w3-padding-large w3-black">
+			<i class="fa fa-arrow-left w3-xxlarge"></i>
+      <p>GO BACK</p>
+    </a>
+		<a href="#" class="w3-bar-item w3-button w3-padding-large w3-black">
+			<i class="fa fa-home w3-xxlarge"></i>
+      <p>HOME</p>
+    </a>
+    <a href="#about" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-user w3-xxlarge"></i>
+      <p>ABOUT</p>
+    </a>
+    <div id="reversible">
+      <!-- The elements in the div tag with the reversible class are actually in the reverse order of the elements shown in the website-->
+      <a href="#CAC-2017" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/congressional-app-challenge.png" style="width:100%">
+        <p>Congressional App Challenge 2017 Projects</p>
+      </a>
+      <a href="#code211-2018" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/code211.jpg" style="width:100%">
+        <p>Code211 2018 Projects</p>
+      </a>
+      <a href="#hackChicago-2018" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/hackChicago.svg" style="width:100%">
+        <p>Hack Chicago 2018 Projects</p>
+      </a>
+      <a href="#TadHACK-2018" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/TadHack.png" style="width:100%">
+        <p>TadHACK 2018 Projects</p>
+      </a>
+      <a href="#code211-2019" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/code211.jpg" style="width:100%">
+        <p>Code211 2019 Projects</p>
+      </a>
+      <a href="#windyCityHacks" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/WindyCityHacks.png" style="width:100%">
+        <p>Windy City Hacks Projects</p>
+      </a>
+      <a href="#TadHACK-2019" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/TadHack.png" style="width:100%">
+        <p>TadHACK 2019 Projects</p>
+      </a>
+      <a href="#code211-2020" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/code211.jpg" style="width:100%">
+        <p>Code211 2020 Projects</p>
+      </a>
+      <a href="#MIT-COVID19-Challenge" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/MITCOVID19Challenge.png" style="width:100%">
+        <p>MIT COVID-19 Challenge Projects</p>
+      </a>
+      <a href="#teens-take-on-covid" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/047/532/datas/medium.jpg" style="width:100%">
+        <p>Teens take on COVID Projects</p>
+      </a>
+      <a href="#hackTheLib" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/138/357/datas/medium.jpg" style="width:100%">
+        <p>HackTheLib Projects</p>
+      </a>
+      <a href="#COVID-hacks" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/167/651/datas/medium.jpg" style="width:100%">
+        <p>COVID Hacks Projects</p>
+      </a>
+      <a href="#codeLinc" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/090/755/datas/medium.png" style="width:100%">
+        <p>codeLinc 7.0 Projects</p>
+      </a>
+      <a href="#hackMIT" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/HackMIT.png" style="width:100%">
+        <p>HackMIT Projects</p>
+      </a>
+      <a href="#TadHACK-2020" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/TadHack.png" style="width:100%">
+        <p>TadHACK 2020 Projects</p>
+      </a>
+      <a href="#hackTheLib-NewYear" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/challenge_thumbnails/001/138/357/datas/medium.jpg" style="width:100%">
+        <p>HackTheLib "2021 New Year Hack" Projects</p>
+      </a>
+      <a href="#kaggle" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+        <img src="competitions/kaggle.png" style="width:100%">
+        <p>Kaggle Team Projects</p>
+      </a>
+    </div>
+    <a href="#contact" class="w3-bar-item w3-button w3-padding-large w3-hover-black">
+      <i class="fa fa-envelope w3-xxlarge"></i>
+      <p>CONTACT</p>
+    </a>
+  </nav>
 
 <!-- Navbar on small screens (Hidden on medium and large screens) -->
 <div class="w3-top w3-hide-large w3-hide-medium" id="myNavbar">
@@ -227,93 +268,82 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   <!-- End About Section -->
   </div>
 
-  <!-- Congressional App Challenge 2017 Section -->
-  <div class="w3-padding-64 w3-content" id="CAC-2017">
-    <h2 class="w3-text-light-grey">Congressional App Challenge 2017 projects</h2>
+    <!-- This is to reverse the order of the elements in the div tags. Originally, this was from oldest to most recent hackathon. Now it is from newest hackathon to oldest hackathon. I tried to use the div tag with the reversible class, but that created formatting issues, so I just reversed it manually-->
+
+  <!-- Kaggle Team Section -->
+  <div class="w3-padding-64 w3-content" id="kaggle">
+    <h2 class="w3-text-light-grey">Kaggle Team Projects</h2>
+    <h3>Led under Arnav Sangamnerkar</h3>
     <hr style="width:200px" class="w3-opacity">
 
     <!-- Grid for photos -->
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-center">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/fxgxQKL-YoY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h1>Element Finder & Calculator</h1>
-        
-        <p> Creators </p>
-        <li>
-          <ol><a href="https://www.linkedin.com/in/michael-parekh/">Michael Parekh (Fremd class of 2020 Coding Club)</a></ol>
-          <ol><a href="https://www.linkedin.com/in/arnav-passi-a341291b7/">Arnav Passi (Fremd class of 2020 Coding Club)</a></ol>
-          <ol>Thomas Kovathana (Fremd class of 2020 Coding Club)</ol>
-          <ol>Brandon Rosero (Fremd class of 2020 Coding Club)</ol>
-        </li>
-      <p>Got 3rd Place overall</p>
-      </div>
-    <!-- End photo grid -->
-    </div>
-  <!-- End Congressional App Challenge 2017 Section -->
-  </div> 
-
-  <!-- Code211 2018 Section -->
-  <div class="w3-padding-64 w3-content" id="code211-2018">
-    <h2 class="w3-text-light-grey">Code211 2018 projects</h2>
-    <hr style="width:200px" class="w3-opacity">
-
-    <!-- Grid for photos -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-center">
-        <a href = "https://github.com/Michael-Parekh/aircare">
-        <img src="projectImages/Code211 2018/aircare.png" style="width:100%">
-        <h1>Aircare</h1>
+        <a href="https://www.kaggle.com/spaghettiidawg666/cactus-jack">
+          <img class="resize-image" src="Kaggle/AerialCactus.png" style="width:100%">
+          <h3>Aerial Cactus Identification</h3>
         </a>
-        <p> Creators </p>
-        <li>
-          <ol><a href="https://www.linkedin.com/in/michael-parekh/">Michael Parekh (Fremd class of 2020 Coding Club)</a></ol>
-          <ol><a href="https://www.linkedin.com/in/arnav-passi-a341291b7/">Arnav Passi (Fremd class of 2020 Coding Club)</a></ol>
-          <ol>Thomas Kovathana (Fremd class of 2020 Coding Club)</ol>
-          <ol>Brandon Rosero (Fremd class of 2020 Coding Club)</ol>
-        </li>
-      <p>Got 3rd Place overall</p>
+        <a href="https://www.kaggle.com/spaghettiidawg666/food-classification">
+          <img class="resize-image" src="Kaggle/FoodImages.jpg" style="width:100%">
+          <h3>Food Images</h3>
+        </a>
+        <a href="https://www.kaggle.com/spaghettiidawg666/primary-election-analysis-2016">
+          <img class="resize-image" src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" style="width:100%">
+          <h3>Primary Election Analysis 2016</h3>
+        </a>
+        <a href="https://drive.google.com/drive/folders/1dS9gw7sARuLgha4Y3cbidzLiDuYubK3U?usp=sharing ">
+          <img class="resize-image" src="competitions/kaggle.png">
+          <h3>More Projects</h3>
+        </a>
       </div>
     <!-- End photo grid -->
     </div>
-  <!-- End Code211 2018 Section -->
+  <!-- End Kaggle Team Section -->
   </div>
 
-  <!-- Hack Chicago 2018 Section -->
-  <div class="w3-padding-64 w3-content" id="hackChicago-2018">
-    <h2 class="w3-text-light-grey">Hack Chicago 2018 projects</h2>
+  <!-- HackTheLib "New Year" Section -->
+  <div class="w3-padding-64 w3-content" id="hackTheLib-NewYear">
+    <h2 class="w3-text-light-grey">HackTheLib "2021 New Year Hack" Projects</h2>
     <hr style="width:200px" class="w3-opacity">
 
     <!-- Grid for photos -->
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-center">
-        <a href = "https://devpost.com/software/budge-ig4o2e">
-        <img src="projectImages/Hack Chicago 2018/budge.jpg" style="width:100%">
-        <h1>Budge</h1>
+        <a href="https://devpost.com/software/tweetifai">
+        <img src="projectImages/HackTheLib New Year/TweetifAI.jpg" style="width:100%">
+        <h1>TweetifAI</h1>
         </a>
-        <p> Creators </p>
-        <li>
-          <ol><a href="https://www.linkedin.com/in/pavan-pandurangi-abb91a18a/">Pavan Pandurangi (Fremd class of 2021 Coding Club)</a></ol>
-          <ol>Ryan Zheng (Fremd class of 2021)</ol>
-          <ol>Suraj Rao (Fremd class of 2020 Coding Club)</ol>
-          <ol>Edward Zhang (Fremd class of 2020)</ol>
-        </li>
+        <p>Arnav Sangamnerkar</p>
+        <p>Won best overall project </p>
+
+        <a href="https://devpost.com/software/whatsapp-messages-via-webpage">
+        <img src="projectImages/HackTheLib New Year/whatsapp.png" style="width:100%">
+        <h1>Whatsapp Messages via Webpage</h1>
+        </a>
+        <p>Arvind Kakanavaram (Fremd Class of 2024)</p>
+
+        <a href="https://devpost.com/software/6-foot-police">
+        <img src="projectImages/HackTheLib New Year/sixFeet.jpg" style="width:100%">
+        <h1>6 foot Police</h1>
+        </a>
+        <p>Yug Mittal</p>
       </div>
     <!-- End photo grid -->
     </div>
-  <!-- End Hack Chicago 2018 Section -->
+  <!-- End HackTheLib "New Year" Section -->
   </div>
 
-  <!-- TadHACK 2018 Section -->
-  <div class="w3-padding-64 w3-content" id="TadHACK-2018">
-    <h2 class="w3-text-light-grey">TadHACK 2018 Projects</h2>
+  <!-- TadHACK 2020 Section -->
+  <div class="w3-padding-64 w3-content" id="TadHACK-2020">
+    <h2 class="w3-text-light-grey">TadHACK 2020 Projects</h2>
     <hr style="width:200px" class="w3-opacity">
 
     <!-- Grid for photos -->
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-center">
         <a href="https://github.com/pavpanda/brighter-safe">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/XpbfkbapzVU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h1>Sysafe</h1>
+        <img src="projectImages/TadHACK 2020/brighter-safe.png" style="width:100%">
+        <h1>Brighter-safe</h1>
         </a>
         <p>Creators</p>
         <li>
@@ -321,88 +351,52 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
           <ol>Vishal Chandrasekaran (Fremd Class of 2021 Coding Club)</ol>
           <ol>Jihoon Park (Fremd Class of 2021 Coding Club)</ol>
           <ol>Ryan Zheng (Fremd Class of 2021)</ol>
-          <ol>Edward Zhang (Fremd Class of 2021)</ol>
         </li>
       
       </div>
     <!-- End photo grid -->
     </div>
-  <!-- End TadHACK 2018 Section -->
+  <!-- End TadHACK 2020 Section -->
   </div>
 
-  <!-- Code211 2019 Section -->
-  <div class="w3-padding-64 w3-content" id="code211-2019">
-    <h2 class="w3-text-light-grey">Code211 2019 projects</h2>
+  <!-- HackMIT Section -->
+  <div class="w3-padding-64 w3-content" id="hackMIT">
+    <h2 class="w3-text-light-grey">HackMIT Projects</h2>
     <hr style="width:200px" class="w3-opacity">
 
     <!-- Grid for photos -->
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-center">
-        <a href = "https://github.com/srandunne/EPOX">
-        <img src="projectImages/Code211 2019/EPOX.jpg" style="width:100%">
-        <h1>EPOX</h1>
-        </a>
-        <p> Creators </p>
-        <li>
-          <ol><a href="https://www.linkedin.com/in/sean-randunne-bb78a81a2/">Sean Randunne (Fremd class of 2020 Coding Club)</a></ol>
-          <ol><a href="https://www.linkedin.com/in/satej-sukthankar-2b58521b1/">Satej Sukthankar (Fremd class of 2020 Coding Club)</a></ol>
-          <ol><a href="https://www.linkedin.com/in/riki-terada-3a2ab01a3/">Riki Terada (Fremd class of 2020 Coding Club)</a></ol>
-          <ol><a href="https://www.linkedin.com/in/shalinmehta22/">Shalin Mehta (Fremd class of 2020 Coding Club)</a></ol>
-        </li>
-      <p>Got 3rd Place in the Advanced Category</p>
-
-      <a href="projectImages/Code211 2019/StockMarketSimulator.zip">
-        <img src="https://specials-images.forbesimg.com/imageserve/5f2b139cc5d1415541643908/960x0.jpg?fit=scale" style="width:100%">
-        <h1>Stock Market Simulator</h1>
+        <a href="https://ashayp22.github.io/HackMIT/">
+        <img src="projectImages/HackMIT/buyorshort10.png" style="width:100%">
+        <h1>Buy or $hort</h1>
         </a>
         <p>Creators</p>
         <li>
-          <ol>Zhewei Jiang (Fremd class of 2022 Coding Club)</ol>
-          <ol>Sanjeev Devarajan (Fremd class of 2022 Coding Club)</ol>
-          <ol>Amol Shah (Fremd class of 2022 Coding Club)</ol>
-          <ol>Aditya Madalli (Fremd class of 2022)</ol>
-        </li>
-      <p>*Note: TKinter and Sklearn need to be installed to run this Python GUI</p>
-      </div>
-    <!-- End photo grid -->
-    </div>
-  <!-- End Code211 2019 Section -->
-  </div>
-
-  <!-- Windy City Hacks Section -->
-  <div class="w3-padding-64 w3-content" id="windyCityHacks">
-    <h2 class="w3-text-light-grey">Windy City Hacks projects</h2>
-    <hr style="width:200px" class="w3-opacity">
-
-    <!-- Grid for photos -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-center">
-        <a href = "https://master.d3vms4nypkjscx.amplifyapp.com/">
-        <img src="projectImages/Windy City Hacks/vouch.png" style="width:100%">
-        <h1>Vouch</h1>
-        </a>
-        <li>
-          <ol><a href="https://www.linkedin.com/in/sean-randunne-bb78a81a2/">Sean Randunne (Fremd High School class of 2020 Coding Club)</a></ol>
-          <ol><a href="https://www.linkedin.com/in/satej-sukthankar-2b58521b1/">Abhi Thosar (Hoffman Estates class of 2019)</a></ol>
-          <ol><a href="https://www.linkedin.com/in/riki-terada-3a2ab01a3/">Armaan Gupta (Waubonzie Valley High School class of 2020)</a></ol>
+          <ol>Arvind Ganeshkumar (Fremd Class of 2022 Coding Club)</ol>
+          <ol>Yug Mittal (Fremd Class of 2021 Coding Club)</ol>
+          <ol>Ashay Parikh (Conant Class of 2021)</ol>
+          <ol>Labdhi Jain (Conant Class of 2021)</ol>
         </li>
       
       </div>
     <!-- End photo grid -->
     </div>
-  <!-- End Windy City Hacks Section -->
+  <!-- End HackMIT Section -->
   </div>
 
-<!-- TadHACK 2019 Section -->
-  <div class="w3-padding-64 w3-content" id="TadHACK-2019">
-    <h2 class="w3-text-light-grey">TadHACK 2019 Projects</h2>
+  <!-- TadHACK 2020 Section -->
+  <div class="w3-padding-64 w3-content" id="TadHACK-2020">
+    <h2 class="w3-text-light-grey">TadHACK 2020 Projects</h2>
     <hr style="width:200px" class="w3-opacity">
 
     <!-- Grid for photos -->
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-center">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/4_B_bg1krSo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-        <h1>Utenz</h1>
+        <a href="https://github.com/pavpanda/brighter-safe">
+        <img src="projectImages/TadHACK 2020/brighter-safe.png" style="width:100%">
+        <h1>Brighter-safe</h1>
+        </a>
         <p>Creators</p>
         <li>
           <ol>Pavan Pandurangi (Fremd Class of 2021 Coding Club)</ol>
@@ -414,7 +408,157 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
       </div>
     <!-- End photo grid -->
     </div>
-  <!-- End TadHACK 2019 Section -->
+  <!-- End TadHACK 2020 Section -->
+  </div>
+
+  <!-- HackMIT Section -->
+  <div class="w3-padding-64 w3-content" id="hackMIT">
+    <h2 class="w3-text-light-grey">HackMIT Projects</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-center">
+        <a href="https://ashayp22.github.io/HackMIT/">
+        <img src="projectImages/HackMIT/buyorshort10.png" style="width:100%">
+        <h1>Buy or $hort</h1>
+        </a>
+        <p>Creators</p>
+        <li>
+          <ol>Arvind Ganeshkumar (Fremd Class of 2022 Coding Club)</ol>
+          <ol>Yug Mittal (Fremd Class of 2021 Coding Club)</ol>
+          <ol>Ashay Parikh (Conant Class of 2021)</ol>
+          <ol>Labdhi Jain (Conant Class of 2021)</ol>
+        </li>
+      
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End HackMIT Section -->
+  </div>
+
+  <!-- codeLinc 7.0 Section -->
+  <div class="w3-padding-64 w3-content" id="codeLinc">
+    <h2 class="w3-text-light-grey">codeLinc 7.0 Projects</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-center">
+        <a href="https://devpost.com/software/project-protect-equip">
+        <img src="projectImages/codeLinc/ProjectProtect&Equip.png" style="width:100%">
+        <h1>Project Protect & Equip</h1>
+        </a>
+        <p>Creators</p>
+        <li>
+          <ol>Pavan Pandurangi (Fremd Class of 2021 Coding Club member)</ol>
+          <ol>Arnav Aggarwal (Fremd Class of 2020)</ol>
+          <ol>Pranay Prabakhar (Fremd Class of 2020 Coding Club member)</ol>
+          <ol>Kinllen Peng (Fremd Class of 2020)</ol>
+          <ol>Harmon Bhasin (Fremd Class of 2020)</ol>
+          <ol>Arnav Batta (Fremd Class of 2019 Coding Club Member)</ol>
+        </li>
+        <p>Won 3rd Place</p>
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End codeLinc 7.0 Section -->
+  </div>
+
+  <!-- COVID Hacks Section -->
+  <div class="w3-padding-64 w3-content" id="COVID-hacks">
+    <h2 class="w3-text-light-grey">COVID Hacks projects</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-center">
+        <a href="https://devpost.com/software/virtual-interest-tracker-qa9e1s">
+        <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/210/504/datas/gallery.jpg" style="width:100%">
+        <h1>Virtual Interest Seeker</h1>
+        <p>Yug Mittal and students outside Illinois</p>
+        </a>
+      
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End COVID Hacks Section -->
+  </div>
+
+  <!-- HackTheLib Section -->
+  <div class="w3-padding-64 w3-content" id="hackTheLib">
+    <h2 class="w3-text-light-grey">HackTheLib projects</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-center">
+        <a href="https://devpost.com/software/saferlife">
+        <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_thumbnail_photos/001/147/525/datas/medium.jpg" style="width:100%">
+        <h1>SaferLife</h1>
+        <p>Arnav Sangamnerkar</p>
+        </a>
+      
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End HackTheLib Section -->
+  </div>
+
+  <!-- Teens take on COVID Section -->
+  <div class="w3-padding-64 w3-content" id="teens-take-on-covid">
+    <h2 class="w3-text-light-grey">Teens take on COVID projects</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-center">
+        <a href="https://devpost.com/software/interactive-coronavirus-data">
+        <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/104/451/datas/medium.jpg" style="width:100%">
+        <h1>Interactive Coronavirus Data</h1>
+        </a>
+        <p>Creators</p>
+        <li>
+          <ol>Yug Mittal (Fremd Class of 2021)</ol>
+          <ol>Arvind Ganeshkumar (Fremd Class of 2022)</ol>
+          <ol>Saipranav Venkatakrishnan (Fremd Class of 2022)</ol>
+          <ol>Pranav Prasad (Fremd Class of 2023)</ol>
+        </li>
+
+        <a href="https://devpost.com/software/covid-19-contact-tracing">
+        <img src="https://www.dph.illinois.gov/sites/default/files/COVID19/ContactTracing_Title.jpg" style="width:100%">
+        <h1>COVID-19 Contact Tracing</h1>
+        </a>
+        <p>Creators</p>
+        <li>
+          <ol>Arnav Sangamnerkar (Fremd Class of 2022)</ol>
+        </li>
+        
+      
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End Teens take on COVID Section -->
+  </div>
+
+  <!-- MIT COVID-19 Challenge Section -->
+  <div class="w3-padding-64 w3-content" id="MIT-COVID19-Challenge">
+    <h2 class="w3-text-light-grey">MIT COVID-19 Challenge projects</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-center">
+        <a href="https://github.com/mittal1787/COVIDMobilityTracker">
+        <img src="projectImages/MIT COVID-19 Challenge/COVID-Mobility.png" style="width:100%">
+        <h1>COVID Mobility Tracker</h1>
+        <p>Yug Mittal and couple other members not from Fremd</p>
+        </a>
+      
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End MIT COVID-19 Challenge Section -->
   </div>
 
   <!-- Code211 2020 Section -->
@@ -477,168 +621,16 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
   <!-- End Code211 2020 Section -->
   </div>
 
-<!-- MIT COVID-19 Challenge Section -->
-  <div class="w3-padding-64 w3-content" id="MIT-COVID19-Challenge">
-    <h2 class="w3-text-light-grey">MIT COVID-19 Challenge projects</h2>
+  <!-- TadHACK 2019 Section -->
+  <div class="w3-padding-64 w3-content" id="TadHACK-2019">
+    <h2 class="w3-text-light-grey">TadHACK 2019 Projects</h2>
     <hr style="width:200px" class="w3-opacity">
 
     <!-- Grid for photos -->
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-center">
-        <a href="https://github.com/mittal1787/COVIDMobilityTracker">
-        <img src="projectImages/MIT COVID-19 Challenge/COVID-Mobility.png" style="width:100%">
-        <h1>COVID Mobility Tracker</h1>
-        <p>Yug Mittal and couple other members not from Fremd</p>
-        </a>
-      
-      </div>
-    <!-- End photo grid -->
-    </div>
-  <!-- End MIT COVID-19 Challenge Section -->
-  </div>
-
-<!-- Teens take on COVID Section -->
-  <div class="w3-padding-64 w3-content" id="teens-take-on-covid">
-    <h2 class="w3-text-light-grey">Teens take on COVID projects</h2>
-    <hr style="width:200px" class="w3-opacity">
-
-    <!-- Grid for photos -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-center">
-        <a href="https://devpost.com/software/interactive-coronavirus-data">
-        <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/104/451/datas/medium.jpg" style="width:100%">
-        <h1>Interactive Coronavirus Data</h1>
-        </a>
-        <p>Creators</p>
-        <li>
-          <ol>Yug Mittal (Fremd Class of 2021)</ol>
-          <ol>Arvind Ganeshkumar (Fremd Class of 2022)</ol>
-          <ol>Saipranav Venkatakrishnan (Fremd Class of 2022)</ol>
-          <ol>Pranav Prasad (Fremd Class of 2023)</ol>
-        </li>
-
-        <a href="https://devpost.com/software/covid-19-contact-tracing">
-        <img src="https://www.dph.illinois.gov/sites/default/files/COVID19/ContactTracing_Title.jpg" style="width:100%">
-        <h1>COVID-19 Contact Tracing</h1>
-        </a>
-        <p>Creators</p>
-        <li>
-          <ol>Arnav Sangamnerkar (Fremd Class of 2022)</ol>
-        </li>
-        
-      
-      </div>
-    <!-- End photo grid -->
-    </div>
-  <!-- End Teens take on COVID Section -->
-  </div>
-
-<!-- HackTheLib Section -->
-  <div class="w3-padding-64 w3-content" id="hackTheLib">
-    <h2 class="w3-text-light-grey">HackTheLib projects</h2>
-    <hr style="width:200px" class="w3-opacity">
-
-    <!-- Grid for photos -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-center">
-        <a href="https://devpost.com/software/saferlife">
-        <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_thumbnail_photos/001/147/525/datas/medium.jpg" style="width:100%">
-        <h1>SaferLife</h1>
-        <p>Arnav Sangamnerkar</p>
-        </a>
-      
-      </div>
-    <!-- End photo grid -->
-    </div>
-  <!-- End HackTheLib Section -->
-  </div>
-
-<!-- COVID Hacks Section -->
-  <div class="w3-padding-64 w3-content" id="COVID-hacks">
-    <h2 class="w3-text-light-grey">COVID Hacks projects</h2>
-    <hr style="width:200px" class="w3-opacity">
-
-    <!-- Grid for photos -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-center">
-        <a href="https://devpost.com/software/virtual-interest-tracker-qa9e1s">
-        <img src="https://challengepost-s3-challengepost.netdna-ssl.com/photos/production/software_photos/001/210/504/datas/gallery.jpg" style="width:100%">
-        <h1>Virtual Interest Seeker</h1>
-        <p>Yug Mittal and students outside Illinois</p>
-        </a>
-      
-      </div>
-    <!-- End photo grid -->
-    </div>
-  <!-- End COVID Hacks Section -->
-  </div>
-
-<!-- codeLinc 7.0 Section -->
-  <div class="w3-padding-64 w3-content" id="codeLinc">
-    <h2 class="w3-text-light-grey">codeLinc 7.0 Projects</h2>
-    <hr style="width:200px" class="w3-opacity">
-
-    <!-- Grid for photos -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-center">
-        <a href="https://devpost.com/software/project-protect-equip">
-        <img src="projectImages/codeLinc/ProjectProtect&Equip.png" style="width:100%">
-        <h1>Project Protect & Equip</h1>
-        </a>
-        <p>Creators</p>
-        <li>
-          <ol>Pavan Pandurangi (Fremd Class of 2021 Coding Club member)</ol>
-          <ol>Arnav Aggarwal (Fremd Class of 2020)</ol>
-          <ol>Pranay Prabakhar (Fremd Class of 2020 Coding Club member)</ol>
-          <ol>Kinllen Peng (Fremd Class of 2020)</ol>
-          <ol>Harmon Bhasin (Fremd Class of 2020)</ol>
-          <ol>Arnav Batta (Fremd Class of 2019 Coding Club Member)</ol>
-        </li>
-        <p>Won 3rd Place</p>
-      </div>
-    <!-- End photo grid -->
-    </div>
-  <!-- End codeLinc 7.0 Section -->
-  </div>
-
-<!-- HackMIT Section -->
-  <div class="w3-padding-64 w3-content" id="hackMIT">
-    <h2 class="w3-text-light-grey">HackMIT Projects</h2>
-    <hr style="width:200px" class="w3-opacity">
-
-    <!-- Grid for photos -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-center">
-        <a href="https://ashayp22.github.io/HackMIT/">
-        <img src="projectImages/HackMIT/buyorshort10.png" style="width:100%">
-        <h1>Buy or $hort</h1>
-        </a>
-        <p>Creators</p>
-        <li>
-          <ol>Arvind Ganeshkumar (Fremd Class of 2022 Coding Club)</ol>
-          <ol>Yug Mittal (Fremd Class of 2021 Coding Club)</ol>
-          <ol>Ashay Parikh (Conant Class of 2021)</ol>
-          <ol>Labdhi Jain (Conant Class of 2021)</ol>
-        </li>
-      
-      </div>
-    <!-- End photo grid -->
-    </div>
-  <!-- End HackMIT Section -->
-  </div>
-
-<!-- TadHACK 2020 Section -->
-  <div class="w3-padding-64 w3-content" id="TadHACK-2020">
-    <h2 class="w3-text-light-grey">TadHACK 2020 Projects</h2>
-    <hr style="width:200px" class="w3-opacity">
-
-    <!-- Grid for photos -->
-    <div class="w3-row-padding" style="margin:0 -16px">
-      <div class="w3-center">
-        <a href="https://github.com/pavpanda/brighter-safe">
-        <img src="projectImages/TadHACK 2020/brighter-safe.png" style="width:100%">
-        <h1>Brighter-safe</h1>
-        </a>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/4_B_bg1krSo" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h1>Utenz</h1>
         <p>Creators</p>
         <li>
           <ol>Pavan Pandurangi (Fremd Class of 2021 Coding Club)</ol>
@@ -650,71 +642,176 @@ body, h1,h2,h3,h4,h5,h6 {font-family: "Montserrat", sans-serif}
       </div>
     <!-- End photo grid -->
     </div>
-  <!-- End TadHACK 2020 Section -->
+  <!-- End TadHACK 2019 Section -->
   </div>
 
-<!-- HackTheLib "New Year" Section -->
-  <div class="w3-padding-64 w3-content" id="hackTheLib-NewYear">
-    <h2 class="w3-text-light-grey">HackTheLib "2021 New Year Hack" Projects</h2>
+  <!-- Windy City Hacks Section -->
+  <div class="w3-padding-64 w3-content" id="windyCityHacks">
+    <h2 class="w3-text-light-grey">Windy City Hacks projects</h2>
     <hr style="width:200px" class="w3-opacity">
 
     <!-- Grid for photos -->
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-center">
-        <a href="https://devpost.com/software/tweetifai">
-        <img src="projectImages/HackTheLib New Year/TweetifAI.jpg" style="width:100%">
-        <h1>TweetifAI</h1>
+        <a href = "https://master.d3vms4nypkjscx.amplifyapp.com/">
+        <img src="projectImages/Windy City Hacks/vouch.png" style="width:100%">
+        <h1>Vouch</h1>
         </a>
-        <p>Arnav Sangamnerkar</p>
-        <p>Won best overall project </p>
-
-        <a href="https://devpost.com/software/whatsapp-messages-via-webpage">
-        <img src="projectImages/HackTheLib New Year/whatsapp.png" style="width:100%">
-        <h1>Whatsapp Messages via Webpage</h1>
-        </a>
-        <p>Arvind Kakanavaram (Fremd Class of 2024)</p>
-
-        <a href="https://devpost.com/software/6-foot-police">
-        <img src="projectImages/HackTheLib New Year/sixFeet.jpg" style="width:100%">
-        <h1>6 foot Police</h1>
-        </a>
-        <p>Yug Mittal</p>
+        <li>
+          <ol><a href="https://www.linkedin.com/in/sean-randunne-bb78a81a2/">Sean Randunne (Fremd High School class of 2020 Coding Club)</a></ol>
+          <ol><a href="https://www.linkedin.com/in/satej-sukthankar-2b58521b1/">Abhi Thosar (Hoffman Estates class of 2019)</a></ol>
+          <ol><a href="https://www.linkedin.com/in/riki-terada-3a2ab01a3/">Armaan Gupta (Waubonzie Valley High School class of 2020)</a></ol>
+        </li>
+      
       </div>
     <!-- End photo grid -->
     </div>
-  <!-- End HackTheLib "New Year" Section -->
+  <!-- End Windy City Hacks Section -->
   </div>
 
-  <!-- Kaggle Team Section -->
-  <div class="w3-padding-64 w3-content" id="kaggle">
-    <h2 class="w3-text-light-grey">Kaggle Team Projects</h2>
-    <h3>Led under Arnav Sangamnerkar</h3>
+  <!-- Code211 2019 Section -->
+  <div class="w3-padding-64 w3-content" id="code211-2019">
+    <h2 class="w3-text-light-grey">Code211 2019 projects</h2>
     <hr style="width:200px" class="w3-opacity">
 
     <!-- Grid for photos -->
     <div class="w3-row-padding" style="margin:0 -16px">
       <div class="w3-center">
-        <a href="https://www.kaggle.com/spaghettiidawg666/cactus-jack">
-          <img src="Kaggle/AerialCactus.png" style="width:100%">
-          <h3>Aerial Cactus Identification</h3>
+        <a href = "https://github.com/srandunne/EPOX">
+        <img src="projectImages/Code211 2019/EPOX.jpg" style="width:100%">
+        <h1>EPOX</h1>
         </a>
-        <a href="https://www.kaggle.com/spaghettiidawg666/food-classification">
-          <img src="Kaggle/FoodImages.jpg" style="width:100%">
-          <h3>Food Images</h3>
+        <p> Creators </p>
+        <li>
+          <ol><a href="https://www.linkedin.com/in/sean-randunne-bb78a81a2/">Sean Randunne (Fremd class of 2020 Coding Club)</a></ol>
+          <ol><a href="https://www.linkedin.com/in/satej-sukthankar-2b58521b1/">Satej Sukthankar (Fremd class of 2020 Coding Club)</a></ol>
+          <ol><a href="https://www.linkedin.com/in/riki-terada-3a2ab01a3/">Riki Terada (Fremd class of 2020 Coding Club)</a></ol>
+          <ol><a href="https://www.linkedin.com/in/shalinmehta22/">Shalin Mehta (Fremd class of 2020 Coding Club)</a></ol>
+        </li>
+      <p>Got 3rd Place in the Advanced Category</p>
+
+      <a href="projectImages/Code211 2019/StockMarketSimulator.zip">
+        <img src="https://specials-images.forbesimg.com/imageserve/5f2b139cc5d1415541643908/960x0.jpg?fit=scale" style="width:100%">
+        <h1>Stock Market Simulator</h1>
         </a>
-        <a href="https://www.kaggle.com/spaghettiidawg666/primary-election-analysis-2016">
-          <img src="https://cdn.britannica.com/79/4479-050-6EF87027/flag-Stars-and-Stripes-May-1-1795.jpg" style="width:100%">
-          <h3>Primary Election Analysis 2016</h3>
-        </a>
-         <a href="https://drive.google.com/drive/folders/1dS9gw7sARuLgha4Y3cbidzLiDuYubK3U?usp=sharing ">
-          <img src="competitions/kaggle.png">
-          <h3>More Projects</h3>
-        </a>
+        <p>Creators</p>
+        <li>
+          <ol>Zhewei Jiang (Fremd class of 2022 Coding Club)</ol>
+          <ol>Sanjeev Devarajan (Fremd class of 2022 Coding Club)</ol>
+          <ol>Amol Shah (Fremd class of 2022 Coding Club)</ol>
+          <ol>Aditya Madalli (Fremd class of 2022)</ol>
+        </li>
+      <p>*Note: TKinter and Sklearn need to be installed to run this Python GUI</p>
       </div>
     <!-- End photo grid -->
     </div>
-  <!-- End Portfolio Section -->
+  <!-- End Code211 2019 Section -->
   </div>
+
+  <!-- TadHACK 2018 Section -->
+  <div class="w3-padding-64 w3-content" id="TadHACK-2018">
+    <h2 class="w3-text-light-grey">TadHACK 2018 Projects</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-center">
+        <a href="https://github.com/pavpanda/brighter-safe">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/XpbfkbapzVU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h1>Sysafe</h1>
+        </a>
+        <p>Creators</p>
+        <li>
+          <ol>Pavan Pandurangi (Fremd Class of 2021 Coding Club)</ol>
+          <ol>Vishal Chandrasekaran (Fremd Class of 2021 Coding Club)</ol>
+          <ol>Jihoon Park (Fremd Class of 2021 Coding Club)</ol>
+          <ol>Ryan Zheng (Fremd Class of 2021)</ol>
+          <ol>Edward Zhang (Fremd Class of 2021)</ol>
+        </li>
+      
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End TadHACK 2018 Section -->
+  </div>
+
+  <!-- Hack Chicago 2018 Section -->
+  <div class="w3-padding-64 w3-content" id="hackChicago-2018">
+    <h2 class="w3-text-light-grey">Hack Chicago 2018 projects</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-center">
+        <a href = "https://devpost.com/software/budge-ig4o2e">
+        <img src="projectImages/Hack Chicago 2018/budge.jpg" style="width:100%">
+        <h1>Budge</h1>
+        </a>
+        <p> Creators </p>
+        <li>
+          <ol><a href="https://www.linkedin.com/in/pavan-pandurangi-abb91a18a/">Pavan Pandurangi (Fremd class of 2021 Coding Club)</a></ol>
+          <ol>Ryan Zheng (Fremd class of 2021)</ol>
+          <ol>Suraj Rao (Fremd class of 2020 Coding Club)</ol>
+          <ol>Edward Zhang (Fremd class of 2020)</ol>
+        </li>
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End Hack Chicago 2018 Section -->
+  </div>
+
+  <!-- Code211 2018 Section -->
+  <div class="w3-padding-64 w3-content" id="code211-2018">
+    <h2 class="w3-text-light-grey">Code211 2018 projects</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-center">
+        <a href = "https://github.com/Michael-Parekh/aircare">
+        <img src="projectImages/Code211 2018/aircare.png" style="width:100%">
+        <h1>Aircare</h1>
+        </a>
+        <p> Creators </p>
+        <li>
+          <ol><a href="https://www.linkedin.com/in/michael-parekh/">Michael Parekh (Fremd class of 2020 Coding Club)</a></ol>
+          <ol><a href="https://www.linkedin.com/in/arnav-passi-a341291b7/">Arnav Passi (Fremd class of 2020 Coding Club)</a></ol>
+          <ol>Thomas Kovathana (Fremd class of 2020 Coding Club)</ol>
+          <ol>Brandon Rosero (Fremd class of 2020 Coding Club)</ol>
+        </li>
+      <p>Got 3rd Place overall</p>
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End Code211 2018 Section -->
+  </div>
+
+  <!-- Congressional App Challenge 2017 Section -->
+  <div class="w3-padding-64 w3-content" id="CAC-2017">
+    <h2 class="w3-text-light-grey">Congressional App Challenge 2017 projects</h2>
+    <hr style="width:200px" class="w3-opacity">
+
+    <!-- Grid for photos -->
+    <div class="w3-row-padding" style="margin:0 -16px">
+      <div class="w3-center">
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/fxgxQKL-YoY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h1>Element Finder & Calculator</h1>
+        
+        <p> Creators </p>
+        <li>
+          <ol><a href="https://www.linkedin.com/in/michael-parekh/">Michael Parekh (Fremd class of 2020 Coding Club)</a></ol>
+          <ol><a href="https://www.linkedin.com/in/arnav-passi-a341291b7/">Arnav Passi (Fremd class of 2020 Coding Club)</a></ol>
+          <ol>Thomas Kovathana (Fremd class of 2020 Coding Club)</ol>
+          <ol>Brandon Rosero (Fremd class of 2020 Coding Club)</ol>
+        </li>
+      <p>Got 3rd Place overall</p>
+      </div>
+    <!-- End photo grid -->
+    </div>
+  <!-- End Congressional App Challenge 2017 Section -->
+  </div>
+
+  
 
   <!-- Contact Section -->
   <div class="w3-padding-64 w3-content w3-text-grey" id="contact">
