@@ -8,6 +8,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+<link rel="icon" href="https://pics.freeicons.io/uploads/icons/png/9580547601553228570-64.png">
 <body id="myPage">
 
 <!-- Sidebar on click -->
@@ -730,10 +731,10 @@
       <p>Swing by for a cup of coffee, or whatever.</p>
       <p><i class="fa fa-map-marker w3-text-teal w3-xlarge"></i> William Fremd High School, Palatine, IL</p>
       <p><i class="fa fa-phone w3-text-teal w3-xlarge"></i> Phone number</p>
-      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  test@test.org </p>
+      <p><i class="fa fa-envelope-o w3-text-teal w3-xlarge"></i>  fremdCodingClub@gmail.com </p>
     </div>
     <div class="w3-col m7">
-      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="/action_page.php" target="_blank">
+      <form class="w3-container w3-card-4 w3-padding-16 w3-white" action="contact.php" method="POST" target="_blank">
       <div class="w3-section">      
         <label>Name</label>
         <input class="w3-input" type="text" name="Name" required>
@@ -743,12 +744,17 @@
         <input class="w3-input" type="text" name="Email" required>
       </div>
       <div class="w3-section">      
+        <label>Subject</label>
+        <input class="w3-input" type="text" name="Subject" required>
+      </div>
+      <div class="w3-section">      
         <label>Message</label>
         <input class="w3-input" type="text" name="Message" required>
       </div>  
       <input class="w3-check" type="checkbox" checked name="Like">
       <label>I Like it!</label>
-      <button type="submit" class="w3-button w3-right w3-theme">Send</button>
+      <button type="submit" class="w3-button w3-right w3-theme" href="#contact">Send</button>
+      
       </form>
     </div>
   </div>
